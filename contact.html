@@ -3,13 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | 4U Barcelona</title>
-  <meta name="description" content="Get in touch with 4U Barcelona.">
+  <title>Contact Us | 4U Barcelona</title>
+  <meta name="description" content="Get in touch with 4U Barcelona. We're here to help you plan your perfect Barcelona experience.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contact-hero {
+      position: relative;
+      padding: 180px 0 100px;
+      background: var(--primary);
+      overflow: hidden;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1920&q=60') center/cover no-repeat;
+      opacity: 0.15;
+    }
+
+    .contact-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-hero h1 { margin-bottom: 16px; }
+
+    .contact-hero p {
+      font-size: 1.15rem;
+      opacity: 0.8;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .contact-body {
+      padding: 0 0 100px;
+      background: var(--gray-100);
+    }
+
+    .contact-card-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      transform: translateY(-50px);
+    }
+
+    .contact-info-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .contact-info-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .contact-info-card .card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 20px;
+    }
+
+    .contact-info-card h3 {
+      font-family: var(--font);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gray-600);
+      margin-bottom: 10px;
+    }
+
+    .contact-info-card a,
+    .contact-info-card p {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-info-card a:hover { color: var(--accent); }
+
+    .contact-main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .contact-side h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .contact-side p {
+      color: var(--gray-600);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .contact-social-row {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .contact-social-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 50px;
+      border: 1.5px solid var(--gray-300);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-social-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .hours-table {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hours-table h4 {
+      padding: 18px 24px;
+      background: var(--primary);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 24px;
+      border-bottom: 1px solid var(--gray-200);
+      font-size: 0.9rem;
+    }
+
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row .day { color: var(--gray-600); }
+    .hours-row .time { font-weight: 600; color: var(--primary); }
+
+    .contact-form-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 48px 44px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .contact-form-card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .contact-form-card > p {
+      color: var(--gray-600);
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-success {
+      text-align: center;
+      padding: 40px 20px;
+      display: none;
+    }
+
+    .form-success .checkmark {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+    }
+
+    .form-success h3 { margin-bottom: 10px; }
+    .form-success p { color: var(--gray-600); }
+
+    @media (max-width: 768px) {
+      .contact-card-row { grid-template-columns: 1fr; transform: translateY(0); margin-bottom: 32px; }
+      .contact-main-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form-card { padding: 32px 24px; }
+      .contact-body { padding: 0 0 60px; }
+    }
+  </style>
 </head>
 <body>
+
   <nav class="navbar scrolled">
     <div class="container">
       <a href="index.html" class="navbar-logo">
@@ -19,7 +229,7 @@
         <li><a href="index.html" data-i18n="nav_tours">Tours</a></li>
         <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
         <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
-        <li><a href="https://www.4ubarcelona.com/bcn-guide" data-i18n="nav_blog">BCN Guide</a></li>
+        <li><a href="bcn-guide.html" data-i18n="nav_blog">BCN Guide</a></li>
         <li class="lang-selector">
           <a href="#" data-lang="en" onclick="setLanguage('en')" class="active">EN</a>
           <a href="#" data-lang="fr" onclick="setLanguage('fr')">FR</a>
@@ -33,58 +243,106 @@
     </div>
   </nav>
 
-  <section class="about-hero">
-    <div class="container">
+  <div class="contact-hero">
+    <div class="contact-hero-content">
       <h1>Get In Touch</h1>
+      <p>We'd love to hear from you. Our team responds within 24 hours.</p>
     </div>
-  </section>
+  </div>
 
-  <section class="contact-grid">
+  <div class="contact-body">
     <div class="container">
-      <div>
-        <div class="contact-info-item">
-          <h3>Email</h3>
-          <p><a href="mailto:info@4ubarcelona.com">info@4ubarcelona.com</a></p>
+      <div class="contact-card-row fade-in">
+        <div class="contact-info-card">
+          <div class="card-icon">✉️</div>
+          <h3>Email Us</h3>
+          <a href="mailto:info@4ubarcelona.com">info@4ubarcelona.com</a>
         </div>
-        <div class="contact-info-item">
-          <h3>Phone</h3>
-          <p><a href="tel:+34663331088">+34 663 331 088</a></p>
+        <div class="contact-info-card">
+          <div class="card-icon">📞</div>
+          <h3>Call Us</h3>
+          <a href="tel:+34663331088">+34 663 331 088</a>
         </div>
-        <div class="contact-info-item">
-          <h3>Address</h3>
+        <div class="contact-info-card">
+          <div class="card-icon">📍</div>
+          <h3>Based In</h3>
           <p>Barcelona, Spain</p>
         </div>
       </div>
-      <div>
-        <form>
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input id="name" type="text" required>
+
+      <div class="contact-main-grid">
+        <div class="contact-side fade-in">
+          <h2>Let's Plan Your <span class="text-accent">Barcelona Experience</span></h2>
+          <p>Whether you have a question about one of our tours, need a custom group experience, or simply want to know more about Barcelona — we're here for you.</p>
+
+          <div class="contact-social-row">
+            <a href="https://www.instagram.com/4ubarcelona/" target="_blank" class="contact-social-btn">📷 Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61564466648421" target="_blank" class="contact-social-btn">📘 Facebook</a>
+            <a href="https://www.tiktok.com/@4ubarcelona" target="_blank" class="contact-social-btn">🎵 TikTok</a>
           </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" type="email" required>
+
+          <div class="hours-table">
+            <h4>Response Hours</h4>
+            <div class="hours-row"><span class="day">Monday – Friday</span><span class="time">9:00 – 20:00</span></div>
+            <div class="hours-row"><span class="day">Saturday</span><span class="time">10:00 – 18:00</span></div>
+            <div class="hours-row"><span class="day">Sunday</span><span class="time">10:00 – 15:00</span></div>
           </div>
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input id="subject" type="text" required>
+        </div>
+
+        <div class="contact-form-card fade-in">
+          <h2>Send Us a Message</h2>
+          <p>Fill in the form below and we'll get back to you as soon as possible.</p>
+
+          <form id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="John" required>
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Doe" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <select>
+                <option value="">Select a topic…</option>
+                <option>Sagrada Familia Tour</option>
+                <option>Park Güell Tour</option>
+                <option>Gothic Quarter Tour</option>
+                <option>Bike Tour</option>
+                <option>Private Group Booking</option>
+                <option>General Question</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea rows="5" placeholder="Tell us about your trip, group size, preferred dates…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Message →</button>
+          </form>
+
+          <div class="form-success" id="form-success">
+            <div class="checkmark">✅</div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out. We'll reply to your email within 24 hours.</p>
           </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" rows="6" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/3eef1a0d-78be-4186-bd56-726dcaa5ebf6/4U_logo_vectoritzat_sense_fons_blau.png?format=300w" alt="4U Barcelona">
-          <p>Premium guided tours in Barcelona since 2012.</p>
+          <p>Premium guided tours in Barcelona since 2012. Quality over quantity.</p>
           <div class="footer-social">
             <a href="https://www.instagram.com/4ubarcelona/" target="_blank">📷</a>
             <a href="https://www.facebook.com/profile.php?id=61564466648421" target="_blank">📘</a>
@@ -105,6 +363,7 @@
           <ul>
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="bcn-guide.html">BCN Guide</a></li>
           </ul>
         </div>
         <div>
@@ -122,5 +381,12 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    });
+  </script>
 </body>
 </html>

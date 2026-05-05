@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BCN Guide – Discover Barcelona | 4U Barcelona</title>
+  <meta name="description" content="Your local guide to Barcelona. Food, culture, neighbourhoods, events and insider tips from our expert team.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .guide-hero {
+      position: relative;
+      padding: 180px 0 120px;
+      background: var(--primary);
+      overflow: hidden;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .guide-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1920&q=60') center/cover no-repeat;
+      opacity: 0.2;
+    }
+
+    .guide-hero-content { position: relative; z-index: 2; }
+    .guide-hero h1 { margin-bottom: 16px; }
+    .guide-hero p { font-size: 1.15rem; opacity: 0.8; max-width: 600px; margin: 0 auto 40px; }
+
+    .guide-filter {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .filter-btn {
+      padding: 9px 22px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      background: transparent;
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .guide-body { padding: 80px 0 100px; }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .guide-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .guide-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .guide-card-img {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+    }
+
+    .guide-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .guide-card:hover .guide-card-img img { transform: scale(1.06); }
+
+    .guide-card-body { padding: 24px; }
+
+    .guide-card-cat {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 12px;
+    }
+
+    .cat-culture { background: rgba(0,180,216,0.12); color: var(--accent); }
+    .cat-food { background: rgba(212,168,83,0.15); color: var(--gold); }
+    .cat-areas { background: rgba(63,185,80,0.12); color: #3fb950; }
+
+    .guide-card-body h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .guide-card-body p {
+      color: var(--gray-600);
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .guide-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--gray-600);
+      padding-top: 14px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .guide-card-read {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: var(--transition);
+    }
+
+    .guide-card-read:hover { gap: 8px; }
+
+    .guide-featured {
+      grid-column: span 2;
+    }
+
+    .guide-featured .guide-card-img { aspect-ratio: 16/7; }
+
+    .guide-featured .guide-card-body h3 { font-size: 1.5rem; }
+
+    .guide-article-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(10,22,40,0.7);
+      backdrop-filter: blur(6px);
+      overflow-y: auto;
+    }
+
+    .guide-article-overlay.open { display: flex; align-items: flex-start; justify-content: center; padding: 40px 20px; }
+
+    .guide-article-modal {
+      background: var(--white);
+      border-radius: var(--radius);
+      max-width: 760px;
+      width: 100%;
+      overflow: hidden;
+      animation: fadeUp 0.3s ease;
+    }
+
+    .guide-article-modal img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+    }
+
+    .guide-article-content { padding: 44px; }
+    .guide-article-content h1 { font-size: 2rem; margin-bottom: 12px; }
+    .guide-article-content .meta { color: var(--gray-600); font-size: 0.85rem; margin-bottom: 28px; }
+    .guide-article-content p { color: var(--gray-800); line-height: 1.85; margin-bottom: 18px; font-size: 0.97rem; }
+    .guide-article-content h2 { font-size: 1.3rem; margin: 28px 0 12px; }
+
+    .guide-article-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--white);
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .guide-article-close:hover { background: var(--gray-100); }
+
+    @media (max-width: 900px) {
+      .guide-grid { grid-template-columns: 1fr 1fr; }
+      .guide-featured { grid-column: span 2; }
+    }
+
+    @media (max-width: 600px) {
+      .guide-grid { grid-template-columns: 1fr; }
+      .guide-featured { grid-column: span 1; }
+      .guide-article-content { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar scrolled">
+    <div class="container">
+      <a href="index.html" class="navbar-logo">
+        <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/3eef1a0d-78be-4186-bd56-726dcaa5ebf6/4U_logo_vectoritzat_sense_fons_blau.png?format=300w" alt="4U Barcelona">
+      </a>
+      <ul class="navbar-nav">
+        <li><a href="index.html" data-i18n="nav_tours">Tours</a></li>
+        <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+        <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        <li><a href="bcn-guide.html" data-i18n="nav_blog">BCN Guide</a></li>
+        <li class="lang-selector">
+          <a href="#" data-lang="en" onclick="setLanguage('en')" class="active">EN</a>
+          <a href="#" data-lang="fr" onclick="setLanguage('fr')">FR</a>
+          <a href="#" data-lang="pt" onclick="setLanguage('pt')">PT</a>
+          <a href="#" data-lang="ru" onclick="setLanguage('ru')">RU</a>
+        </li>
+      </ul>
+      <div class="hamburger" onclick="document.querySelector('.navbar-nav').classList.toggle('active')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="guide-hero">
+    <div class="guide-hero-content">
+      <h1>Discover Barcelona</h1>
+      <p>A local guide to food, culture, neighbourhoods and hidden gems — curated by our expert team.</p>
+      <div class="guide-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="culture">Culture & Events</button>
+        <button class="filter-btn" data-filter="food">Food & Drinks</button>
+        <button class="filter-btn" data-filter="areas">Areas & Neighbourhoods</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="guide-body">
+    <div class="container">
+      <div class="guide-grid" id="guide-grid">
+
+        <div class="guide-card guide-featured fade-in" data-category="culture" onclick="openArticle('catalan-culture')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739013005709-TRK2BPIRSF38L4TIPL37/Cultura%2BCatalana.jpg" alt="Catalan Culture">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-culture">Culture & Events</span>
+            <h3>Catalan Culture: an Introduction</h3>
+            <p>An insight into Catalan culture, its language, traditions, and the proud spirit of its people. Discover what makes Catalonia truly unique in the heart of Europe.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 6, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="areas" onclick="openArticle('tibidabo')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739014608149-JBJOGQGKKHDH2241N4Y6/Tibidabo.png" alt="Tibidabo">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-areas">Areas & Neighbourhoods</span>
+            <h3>Tibidabo</h3>
+            <p>Perched above Barcelona, Tibidabo offers stunning panoramic views of the city and surrounding landscape.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 5, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="food" onclick="openArticle('catalan-food')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/70e5a9b5-b199-499d-917a-2081438a86e1/Calcots.png" alt="Catalan Food">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-food">Food & Drinks</span>
+            <h3>Catalan Food: an Introduction</h3>
+            <p>From fresh Mediterranean ingredients to creative dishes, Catalan gastronomy offers a unique taste of the region's culture and history.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 6, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="food" onclick="openArticle('cava-vermut')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1737038869825-MUNGNW0IYNDZFIH0SOXE/kamila-maciejewska-UBX5-_ajTXw-unsplash.jpg" alt="Cava and Vermut">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-food">Food & Drinks</span>
+            <h3>Cava & the Art of Vermut</h3>
+            <p>From the crisp bubbles of cava to the ritual of vermut and the diverse flavors of the region's celebrated wines.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 4, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="culture" onclick="openArticle('sant-jordi')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015158764-ZYDQNH6U0R480HQLQ4HJ/Sant+Jordi.jpg" alt="Sant Jordi">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-culture">Culture & Events</span>
+            <h3>Sant Jordi's Day</h3>
+            <p>Celebrate love, literature, and Catalan culture on Sant Jordi's Day, when the city's streets fill with bookstalls and roses.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 3, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="areas" onclick="openArticle('gracia')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/d1d55c6d-a233-4b80-9423-46acf648a5e7/jovana-jelovac-6dBACFmei4I-unsplash.jpg" alt="Gracia District">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-areas">Areas & Neighbourhoods</span>
+            <h3>Gràcia District</h3>
+            <p>Explore Gràcia, a Barcelona neighbourhood where narrow streets, bustling plazas, and a local, artistic spirit invite you to wander.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 2, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="culture" onclick="openArticle('palau-musica')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015570792-PF2W2VIXVBJBTUTH3VUZ/Palau+de+la+Musica.png" alt="Palau de la Musica">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-culture">Culture & Events</span>
+            <h3>Palau de la Música Catalana</h3>
+            <p>A masterpiece of Modernism by Lluís Domènech i Montaner, nestled on a side street in the heart of the city.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 1, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="areas" onclick="openArticle('barceloneta')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015707494-14ID0I9HID7628HD50SG/Barceloneta.png" alt="Barceloneta">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-areas">Areas & Neighbourhoods</span>
+            <h3>Barceloneta</h3>
+            <p>Where the Mediterranean Sea meets urban energy — lively promenades, seafood, and a stunning coastline.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Jan 31, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="food" onclick="openArticle('desserts')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1738856520931-2MAI04OO1O0DLZNR87HG/pexels-leeloothefirst-5255957.jpg" alt="Desserts">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-food">Food & Drinks</span>
+            <h3>Desserts & Treats</h3>
+            <p>From Churros to Crema Catalana: discover the sweet traditions that make this region so irresistible.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Jan 30, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/3eef1a0d-78be-4186-bd56-726dcaa5ebf6/4U_logo_vectoritzat_sense_fons_blau.png?format=300w" alt="4U Barcelona">
+          <p>Premium guided tours in Barcelona since 2012. Quality over quantity.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/4ubarcelona/" target="_blank">📷</a>
+            <a href="https://www.facebook.com/profile.php?id=61564466648421" target="_blank">📘</a>
+            <a href="https://www.tiktok.com/@4ubarcelona" target="_blank">🎵</a>
+          </div>
+        </div>
+        <div>
+          <h4>Tours</h4>
+          <ul>
+            <li><a href="sagrada-familia.html">Sagrada Familia</a></li>
+            <li><a href="park-guell.html">Park Güell</a></li>
+            <li><a href="gothic-quarter.html">Gothic Quarter</a></li>
+            <li><a href="bike-tour.html">Bike Tour</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="bcn-guide.html">BCN Guide</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@4ubarcelona.com">info@4ubarcelona.com</a></li>
+            <li><a href="tel:+34663331088">+34 663 331 088</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 4U Barcelona. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="guide-article-overlay" id="article-overlay" onclick="closeArticleOutside(event)">
+    <div class="guide-article-modal" id="article-modal">
+      <button class="guide-article-close" onclick="closeArticle()">✕</button>
+      <img id="article-img" src="" alt="">
+      <div class="guide-article-content" id="article-content"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    const articles = {
+      'catalan-culture': {
+        img: 'https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739013005709-TRK2BPIRSF38L4TIPL37/Cultura%2BCatalana.jpg',
+        cat: 'Culture & Events', date: 'February 6, 2025',
+        title: 'Catalan Culture: an Introduction',
+        body: `<p>Catalonia is not just a region of Spain — it is a nation with its own identity, language, and centuries of proud tradition. Understanding Catalan culture means understanding its paradoxes: a people deeply rooted in history yet fiercely modern, passionately Mediterranean yet distinctly northern European in sensibility.</p>
+        <h2>The Language</h2>
+        <p>Catalan is the heart of Catalan identity. Spoken by over 10 million people across Catalonia, Valencia, the Balearic Islands, and beyond, it is a fully developed Romance language — not a dialect of Spanish. When visiting Barcelona, you'll notice that street signs, menus, and daily conversation often flow between Catalan and Spanish with effortless fluency.</p>
+        <h2>Traditions</h2>
+        <p>Few sights are more emblematic than the <em>castellers</em> — human towers built by teams of hundreds during festivals. Recognized by UNESCO as Intangible Cultural Heritage, these towers represent the Catalan values of strength, balance, courage, and common sense. The <em>sardana</em>, the national dance of Catalonia, is another symbol: a circular, collective dance that embodies unity and continuity.</p>
+        <h2>The Proud Spirit</h2>
+        <p>Catalans are known for their entrepreneurial spirit, their love of good food, and their fierce sense of local identity. Barcelona, as their capital, is not merely a tourist destination — it is a living culture, and visiting it with that awareness transforms any trip into something far richer.</p>`
+      },
+      'tibidabo': {
+        img: 'https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739014608149-JBJOGQGKKHDH2241N4Y6/Tibidabo.png',
+        cat: 'Areas & Neighbourhoods', date: 'February 5, 2025',
+        title: 'Tibidabo',
+        body: `<p>Rising 512 metres above sea level, Tibidabo is the highest peak of the Serra de Collserola and the perfect vantage point to see all of Barcelona spread before you — from the glittering Mediterranean to the distant Pyrenees on clear days.</p>
+        <h2>Getting There</h2>
+        <p>The journey to Tibidabo is half the adventure. Take the Tramvia Blau (Blue Tram), one of the last functioning trams in Barcelona, followed by the funicular railway — a nostalgic ride that has been running since 1901. The ascent through wooded hills feels like stepping back in time.</p>
+        <h2>The Church of the Sacred Heart</h2>
+        <p>At the summit stands the striking Basílica del Sagrat Cor, a neo-Gothic church topped with a bronze statue of Christ with arms outstretched over the city. Its observation terrace offers arguably the best 360-degree panorama in all of Barcelona.</p>
+        <h2>Parc d'Atraccions Tibidabo</h2>
+        <p>One of the oldest amusement parks in the world, still operating since 1901, Tibidabo's funfair retains a wonderfully vintage charm alongside modern attractions. Even if you don't ride anything, the views from the park's perimeter make it completely worth the trip.</p>`
+      },
+      'catalan-food': {
+        img: 'https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/70e5a9b5-b199-499d-917a-2081438a86e1/Calcots.png',
+        cat: 'Food & Drinks', date: 'February 6, 2025',
+        title: 'Catalan Food: an Introduction',
+        body: `<p>Catalan cuisine is one of the most celebrated in all of Europe — bold, creative, and deeply anchored in the seasons and the sea. Rooted in the Mediterranean tradition of simple, high-quality ingredients treated with respect, it has also been the birthplace of some of the world's most innovative cooking.</p>
+        <h2>The Essentials</h2>
+        <p><em>Pa amb tomàquet</em> — bread rubbed with ripe tomato, drizzled with olive oil, and finished with salt — is the cornerstone of every Catalan table. Deceptively simple, impossibly delicious. <em>Escalivada</em>, a smoky roasted aubergine and pepper salad, and <em>fideuà</em>, a noodle paella cooked with seafood, are equally iconic.</p>
+        <h2>Calçots</h2>
+        <p>Every February, Catalans gather for the <em>calçotada</em> — a festive outdoor feast centred on calçots, a variety of large spring onion grilled over an open flame and eaten with fingers dipped in <em>romesco</em> sauce. It is one of the most joyful food traditions in the world.</p>
+        <h2>The Markets</h2>
+        <p>No visit to Barcelona is complete without La Boqueria on La Rambla or the Mercat de Santa Caterina in El Born — vibrant, colourful markets where the finest local produce is on spectacular display. Shopping here is as much a sensory experience as a culinary one.</p>`
+      },
+      'cava-vermut': {
+        img: 'https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1737038869825-MUNGNW0IYNDZFIH0SOXE/kamila-maciejewska-UBX5-_ajTXw-unsplash.jpg',
+        cat: 'Food & Drinks', date: 'February 4, 2025',
+        title: 'Cava & the Art of Vermut',
+        body: `<p>In Catalonia, drinking is never just about the liquid in the glass — it is a ritual, a social act, a celebration of the good life. Two drinks above all others define this culture: cava and vermut.</p>
+        <h2>Cava</h2>
+        <p>Made primarily in the Penedès wine region just south of Barcelona using the traditional method (<em>méthode champenoise</em>), cava is Catalonia's sparkling wine. Crisp, elegant, and far more versatile at the table than its price might suggest, cava is the celebratory drink of choice for Catalans at every occasion from Christmas to Tuesday lunch.</p>
+        <h2>The Vermut Hour</h2>
+        <p>Between 12:00 and 14:00 on weekends, Barcelona transforms. Neighbours spill out onto bar terraces, <em>patatas bravas</em> and anchovies appear on every table, and everyone orders vermut — a bitter, aromatic wine served over ice with a slice of orange and an olive. This is <em>l'hora del vermut</em>, and it is one of the finest urban rituals in Europe.</p>
+        <h2>Where to Experience It</h2>
+        <p>The best vermut bars are found in Gràcia, El Born, and the Eixample. Look for old-fashioned tiled interiors, barrels behind the bar, and a menu written in chalk. Bar Calders, Morro Fi, and El Xampanyet are perennial favourites.</p>`
+      },
+      'sant-jordi': {
+        img: 'https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015158764-ZYDQNH6U0R480HQLQ4HJ/Sant+Jordi.jpg',
+        cat: 'Culture & Events', date: 'February 3, 2025',
+        title: "Sant Jordi's Day",
+        body: `<p>Every 23rd of April, Barcelona becomes one of the most romantic cities on earth — not through grand gestures, but through the simple exchange of books and roses.</p>
+        <h2>The Legend</h2>
+        <p>Sant Jordi (Saint George) is the patron saint of Catalonia. According to legend, when he slew a dragon terrorising a kingdom, a red rose grew from the creature's blood. He offered it to the rescued princess. From this story, a tradition was born: on Sant Jordi's Day, men give women roses, and women give men books.</p>
+        <h2>The Day Itself</h2>
+        <p>The streets of Barcelona — especially Las Ramblas and Passeig de Gràcia — are lined with hundreds of flower and book stalls. Publishers release special editions, authors sign copies in the open air, and the entire city seems to pause in the warm spring sunshine to celebrate love and literature simultaneously.</p>
+        <h2>A Unique Coincidence</h2>
+        <p>April 23 is also World Book Day, chosen in honour of the deaths of both Shakespeare and Cervantes on the same date in 1616. In Catalonia, this coincidence has only deepened the cultural resonance of what is already one of the year's most beloved celebrations.</p>`
+      },
+      'gracia': {
+        img: 'https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/d1d55c6d-a233-4b80-9423-46acf648a5e7/jovana-jelovac-6dBACFmei4I-unsplash.jpg',
+        cat: 'Areas & Neighbourhoods', date: 'February 2, 2025',
+        title: 'Gràcia District',
+        body: `<p>Once an independent municipality only absorbed into Barcelona in 1897, Gràcia has never quite lost its sense of being its own village. Walking into this neighbourhood, you immediately feel the change of pace — quieter, more human-scale, with locals rather than tourists filling the terraces.</p>
+        <h2>The Plazas</h2>
+        <p>Life in Gràcia revolves around its beautiful squares. Plaça del Sol buzzes from morning coffee to late-night drinks. Plaça de la Vila de Gràcia, with its iconic clock tower, is the neighbourhood's civic heart. Plaça de la Virreina feels like a secret haven even on a busy Saturday afternoon.</p>
+        <h2>The Festa Major</h2>
+        <p>Every August, Gràcia hosts one of Barcelona's most spectacular street festivals. Each street competes to create the most extravagant decorations — millions of recycled bottles, papier-mâché sculptures, and intricate installations turning the neighbourhood into an open-air art gallery for a week.</p>
+        <h2>Where to Eat and Drink</h2>
+        <p>Gràcia is home to some of Barcelona's best independent restaurants, vintage shops, and craft cocktail bars. The streets around Carrer de Verdi and Carrer de Bruniquer are particularly rich in excellent options for every taste and budget.</p>`
+      },
+      'palau-musica': {
+        img: 'https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015570792-PF2W2VIXVBJBTUTH3VUZ/Palau+de+la+Musica.png',
+        cat: 'Culture & Events', date: 'February 1, 2025',
+        title: 'Palau de la Música Catalana',
+        body: `<p>Hidden down a narrow street in the Sant Pere neighbourhood, the Palau de la Música Catalana is perhaps the most remarkable concert hall in the world. Designed by Lluís Domènech i Montaner and completed in 1908, it is a UNESCO World Heritage Site and the only concert hall in Europe lit entirely by natural light during the day.</p>
+        <h2>The Architecture</h2>
+        <p>The building is a tour de force of Catalan Modernisme — the local variant of Art Nouveau. Every surface is alive with stained glass, mosaics, sculpted columns, and ceramic reliefs. The main auditorium features an extraordinary inverted stained-glass dome at its centre, flooding the stage with coloured natural light in a way that feels almost supernatural.</p>
+        <h2>Visiting</h2>
+        <p>Guided tours run daily and allow access to the main hall, the foyer, and the stage itself. But the truest way to experience the Palau is to attend a concert — the acoustics are superb, and the combination of extraordinary sound and extraordinary beauty makes for an unforgettable evening.</p>
+        <h2>Attending a Concert</h2>
+        <p>The Palau hosts everything from classical symphony concerts to flamenco, jazz, and contemporary music. Tickets are reasonably priced and can be booked directly through the Palau's website. Evening concerts, when the stained glass glows from within, are particularly magical.</p>`
+      },
+      'barceloneta': {
+        img: 'https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015707494-14ID0I9HID7628HD50SG/Barceloneta.png',
+        cat: 'Areas & Neighbourhoods', date: 'January 31, 2025',
+        title: 'Barceloneta',
+        body: `<p>Built in the 18th century to house workers displaced by the construction of the Ciutadella fortress, Barceloneta has evolved from a working-class fishing village into one of the most energetic and beloved neighbourhoods in the entire city.</p>
+        <h2>The Beach</h2>
+        <p>Barceloneta Beach stretches for 1.1 kilometres along the Mediterranean coast and remains the closest beach to the city centre — just a 20-minute walk from Las Ramblas. In summer, it pulses with energy around the clock. Outside peak season, it reveals its true character: a wide, windswept stretch of sand where locals jog, swim, and read in quiet contemplation.</p>
+        <h2>The Neighbourhood</h2>
+        <p>The interior of Barceloneta is a tight grid of narrow streets filled with traditional seafood restaurants, old fishing families, and the kind of atmospheric corner bars that feel completely untouched by time. The neighbourhood's grid pattern — unusually regular for Barcelona — was designed to maximise ventilation from sea breezes.</p>
+        <h2>What to Eat</h2>
+        <p>Barceloneta is the natural home of <em>fideuà</em>, the noodle cousin of paella. At its best, it is a deeply flavoured dish of thin noodles cooked in rich seafood stock, served with <em>alioli</em> (Catalan garlic mayonnaise). The restaurant La Mar Salada and the historic Set Portes are both worth the reservation.</p>`
+      },
+      'desserts': {
+        img: 'https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1738856520931-2MAI04OO1O0DLZNR87HG/pexels-leeloothefirst-5255957.jpg',
+        cat: 'Food & Drinks', date: 'January 30, 2025',
+        title: 'Desserts & Treats',
+        body: `<p>Catalonia's sweet traditions are as layered and complex as its savoury cooking — ranging from simple street food that has barely changed in centuries to refined pastry arts that rival the best in France.</p>
+        <h2>Crema Catalana</h2>
+        <p>The original custard — creamy, fragrant with cinnamon and lemon zest, topped with a crackled caramel crust created by an iron branded at the table. Crema Catalana predates the French crème brûlée by at least a century and remains the definitive Catalan dessert.</p>
+        <h2>Churros amb Xocolata</h2>
+        <p>Barcelona's cold winter mornings have long been warmed by this indulgent combination: ridged, crispy fried dough served alongside a thick, intensely dark drinking chocolate. The legendary Granja Viader in the Raval neighbourhood has been serving its famous <em>cacaolat</em> and churros since 1870.</p>
+        <h2>Panellets</h2>
+        <p>These small marzipan-based confections are traditionally eaten on November 1st for La Castanyada, Catalonia's celebration of the dead. Rolled in pine nuts, dusted with cocoa, or flavoured with coffee and coconut, they are small and intensely sweet — one is never enough.</p>
+        <h2>Mel i Mató</h2>
+        <p>Perhaps the simplest and most satisfying Catalan dessert: fresh, unsalted sheep's cheese drizzled with dark local honey. A reminder that the best things often require no elaboration.</p>`
+      }
+    };
+
+    function openArticle(id) {
+      const a = articles[id];
+      if (!a) return;
+      document.getElementById('article-img').src = a.img;
+      document.getElementById('article-img').alt = a.title;
+      document.getElementById('article-content').innerHTML = `
+        <span class="guide-card-cat ${a.cat.includes('Culture') ? 'cat-culture' : a.cat.includes('Food') ? 'cat-food' : 'cat-areas'}" style="display:inline-block;margin-bottom:16px;">${a.cat}</span>
+        <h1>${a.title}</h1>
+        <p class="meta">By Isabel Hachmann · ${a.date}</p>
+        ${a.body}`;
+      document.getElementById('article-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeArticle() {
+      document.getElementById('article-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeArticleOutside(e) {
+      if (e.target === document.getElementById('article-overlay')) closeArticle();
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeArticle(); });
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.guide-card').forEach(card => {
+          const match = filter === 'all' || card.dataset.category === filter;
+          card.style.display = match ? '' : 'none';
+          if (filter !== 'all' && card.classList.contains('guide-featured') && match) {
+            card.classList.remove('guide-featured');
+            card.dataset.wasFeatured = 'true';
+          } else if (card.dataset.wasFeatured && filter === 'all') {
+            card.classList.add('guide-featured');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
