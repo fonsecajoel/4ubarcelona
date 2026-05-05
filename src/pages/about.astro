@@ -8,47 +8,46 @@ import Footer from '../components/Footer.astro';
   <Navbar slot="navbar" scrolled={true} />
 
   <!-- Hero Section -->
-  <section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-[var(--primary)] text-white pt-20">
-    <div class="absolute inset-0 z-0">
-      <div class="absolute inset-0 bg-gradient-to-b from-[var(--primary)]/80 via-transparent to-[var(--primary)]/90 z-10"></div>
-      <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1920&q=80" alt="Barcelona skyline" class="w-full h-full object-cover animate-pan" />
+  <section class="about-hero">
+    <div class="about-hero-bg">
+      <div class="about-hero-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1920&q=80" alt="Barcelona skyline" class="hero-img-pan" />
     </div>
-    
-    <div class="container relative z-20 text-center">
-      <h1 class="text-5xl md:text-7xl font-bold font-['Playfair_Display'] mb-6 opacity-0 animate-fade-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">Our City, <span class="text-[var(--gold)]">4U!</span></h1>
-      <p class="text-xl md:text-2xl font-light max-w-2xl mx-auto opacity-0 animate-fade-up" style="animation-delay: 0.4s; animation-fill-mode: forwards;">Discover the soul of Barcelona with the locals who know its best-kept secrets.</p>
+    <div class="container about-hero-content">
+      <h1 class="hero-title">Our City, <span style="color: var(--gold);">4U!</span></h1>
+      <p class="hero-subtitle">Discover the soul of Barcelona with the locals who know its best-kept secrets.</p>
     </div>
   </section>
 
-  <!-- Story Section (Timeline & Text) -->
+  <!-- Story Section -->
   <section class="py-24 bg-white">
     <div class="container">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <!-- Timeline -->
-        <div class="relative pl-8 border-l-2 border-[var(--gold)]/30 space-y-12">
-          <div class="relative">
-            <div class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-[var(--gold)] border-4 border-white shadow-md"></div>
-            <h3 class="text-2xl font-['Playfair_Display'] font-bold text-[var(--primary)]">2012</h3>
-            <p class="text-gray-600 mt-2">Founded by a group of passionate local historians.</p>
+        <div style="position:relative; padding-left: 2rem; border-left: 2px solid rgba(212,168,83,0.3);">
+          <div style="margin-bottom: 3rem; position: relative;">
+            <div style="position:absolute; left:-2.6rem; top:0.25rem; width:1.25rem; height:1.25rem; border-radius:50%; background:var(--gold); border:4px solid white; box-shadow:0 2px 8px rgba(0,0,0,0.15);"></div>
+            <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:var(--primary);">2012</h3>
+            <p style="color:#6c757d; margin-top:0.5rem;">Founded by a group of passionate local historians.</p>
           </div>
-          <div class="relative">
-            <div class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-[var(--gold)] border-4 border-white shadow-md"></div>
-            <h3 class="text-2xl font-['Playfair_Display'] font-bold text-[var(--primary)]">2016</h3>
-            <p class="text-gray-600 mt-2">Expanded to include exclusive private tours and Skip the Line access.</p>
+          <div style="margin-bottom: 3rem; position: relative;">
+            <div style="position:absolute; left:-2.6rem; top:0.25rem; width:1.25rem; height:1.25rem; border-radius:50%; background:var(--gold); border:4px solid white; box-shadow:0 2px 8px rgba(0,0,0,0.15);"></div>
+            <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:var(--primary);">2016</h3>
+            <p style="color:#6c757d; margin-top:0.5rem;">Expanded to include exclusive private tours and Skip the Line access.</p>
           </div>
-          <div class="relative">
-            <div class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-[var(--accent)] border-4 border-white shadow-md shadow-[var(--accent-glow)]"></div>
-            <h3 class="text-2xl font-['Playfair_Display'] font-bold text-[var(--primary)]">Present</h3>
-            <p class="text-gray-600 mt-2">Award-winning experiences maintaining our "Quality over Quantity" promise.</p>
+          <div style="position: relative;">
+            <div style="position:absolute; left:-2.6rem; top:0.25rem; width:1.25rem; height:1.25rem; border-radius:50%; background:var(--accent); border:4px solid white; box-shadow:0 2px 8px var(--accent-glow);"></div>
+            <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:var(--primary);">Present</h3>
+            <p style="color:#6c757d; margin-top:0.5rem;">Award-winning experiences maintaining our "Quality over Quantity" promise.</p>
           </div>
         </div>
 
         <!-- Editorial -->
-        <div class="space-y-6 text-lg text-gray-700 leading-relaxed font-light">
-          <p>
+        <div style="font-size:1.125rem; color:#4a5568; line-height:1.8; font-weight:300;">
+          <p style="margin-bottom:1.5rem;">
             Born out of a deep love for our beautiful home city, we've spent over two decades crafting unforgettable experiences that immerse you in the rich history and culture of Barcelona.
           </p>
-          <blockquote class="border-l-4 border-[var(--accent)] pl-6 italic font-['Playfair_Display'] text-2xl text-[var(--primary)] my-8">
+          <blockquote style="border-left:4px solid var(--accent); padding-left:1.5rem; font-style:italic; font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--primary); margin:2rem 0;">
             "For us, you're more than just a guest; you're part of our story."
           </blockquote>
           <p>
@@ -59,57 +58,54 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
-  <!-- Stats Section (Animated Counters) -->
-  <section class="py-20 bg-[var(--primary)] text-white relative overflow-hidden">
+  <!-- Stats Section -->
+  <section class="py-20 stats-section">
     <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
-    <div class="container relative z-10">
+    <div class="container" style="position:relative; z-index:10;">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center" id="stats-container">
         <div class="p-6">
-          <div class="text-5xl md:text-6xl font-bold font-['Playfair_Display'] text-[var(--gold)] mb-2"><span class="counter" data-target="12">0</span>+</div>
-          <p class="uppercase tracking-widest text-sm font-semibold opacity-80">Years Experience</p>
+          <div style="font-size:clamp(2.5rem,6vw,4rem); font-weight:700; font-family:'Playfair Display',serif; color:var(--gold); margin-bottom:0.5rem;"><span class="counter" data-target="12">0</span>+</div>
+          <p style="text-transform:uppercase; letter-spacing:0.15em; font-size:0.75rem; font-weight:600; opacity:0.8; color:white;">Years Experience</p>
         </div>
         <div class="p-6">
-          <div class="text-5xl md:text-6xl font-bold font-['Playfair_Display'] text-[var(--accent)] mb-2"><span class="counter" data-target="50">0</span>k+</div>
-          <p class="uppercase tracking-widest text-sm font-semibold opacity-80">Happy Guests</p>
+          <div style="font-size:clamp(2.5rem,6vw,4rem); font-weight:700; font-family:'Playfair Display',serif; color:var(--accent); margin-bottom:0.5rem;"><span class="counter" data-target="50">0</span>k+</div>
+          <p style="text-transform:uppercase; letter-spacing:0.15em; font-size:0.75rem; font-weight:600; opacity:0.8; color:white;">Happy Guests</p>
         </div>
         <div class="p-6">
-          <div class="text-5xl md:text-6xl font-bold font-['Playfair_Display'] text-[var(--gold)] mb-2"><span class="counter-decimal" data-target="4.9">0.0</span></div>
-          <p class="uppercase tracking-widest text-sm font-semibold opacity-80">Average Rating</p>
+          <div style="font-size:clamp(2.5rem,6vw,4rem); font-weight:700; font-family:'Playfair Display',serif; color:var(--gold); margin-bottom:0.5rem;"><span class="counter-decimal" data-target="4.9">0.0</span></div>
+          <p style="text-transform:uppercase; letter-spacing:0.15em; font-size:0.75rem; font-weight:600; opacity:0.8; color:white;">Average Rating</p>
         </div>
         <div class="p-6">
-          <div class="text-5xl md:text-6xl font-bold font-['Playfair_Display'] text-[var(--accent)] mb-2"><span class="counter" data-target="4">0</span></div>
-          <p class="uppercase tracking-widest text-sm font-semibold opacity-80">Premium Tours</p>
+          <div style="font-size:clamp(2.5rem,6vw,4rem); font-weight:700; font-family:'Playfair Display',serif; color:var(--accent); margin-bottom:0.5rem;"><span class="counter" data-target="4">0</span></div>
+          <p style="text-transform:uppercase; letter-spacing:0.15em; font-size:0.75rem; font-weight:600; opacity:0.8; color:white;">Premium Tours</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Values/Team Cards -->
+  <!-- Values Cards -->
   <section class="py-24 bg-gray-50">
     <div class="container">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-['Playfair_Display'] font-bold text-[var(--primary)]">The 4U Difference</h2>
-        <div class="w-24 h-1 bg-[var(--accent)] mx-auto mt-6"></div>
+        <h2 style="font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3rem); font-weight:700; color:var(--primary);">The 4U Difference</h2>
+        <div style="width:6rem; height:4px; background:var(--accent); margin:1.5rem auto 0;"></div>
       </div>
-      
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Card 1 -->
-        <div class="bg-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300 group border border-gray-100">
-          <div class="w-16 h-16 rounded-full bg-[var(--primary)] text-white flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-[var(--accent)] transition-all">🗺️</div>
-          <h3 class="text-xl font-bold font-['Playfair_Display'] mb-4 text-[var(--primary)]">Local Expertise</h3>
-          <p class="text-gray-600 leading-relaxed">Our guides aren't just reciting scripts. They are deeply rooted locals and trained historians bringing the city's hidden narratives to life.</p>
+        <div class="value-card">
+          <div class="value-icon">🗺️</div>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:700; color:var(--primary); margin-bottom:1rem;">Local Expertise</h3>
+          <p style="color:#6c757d; line-height:1.7;">Our guides aren't just reciting scripts. They are deeply rooted locals and trained historians bringing the city's hidden narratives to life.</p>
         </div>
-        <!-- Card 2 -->
-        <div class="bg-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300 group border border-gray-100">
-          <div class="w-16 h-16 rounded-full bg-[var(--primary)] text-white flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-[var(--gold)] transition-all">👥</div>
-          <h3 class="text-xl font-bold font-['Playfair_Display'] mb-4 text-[var(--primary)]">Intimate Groups</h3>
-          <p class="text-gray-600 leading-relaxed">We strictly cap our semi-private tours at 9 guests to ensure a conversational, personalized pace rather than a crowded march.</p>
+        <div class="value-card">
+          <div class="value-icon">👥</div>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:700; color:var(--primary); margin-bottom:1rem;">Intimate Groups</h3>
+          <p style="color:#6c757d; line-height:1.7;">We strictly cap our semi-private tours at 9 guests to ensure a conversational, personalized pace rather than a crowded march.</p>
         </div>
-        <!-- Card 3 -->
-        <div class="bg-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300 group border border-gray-100">
-          <div class="w-16 h-16 rounded-full bg-[var(--primary)] text-white flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-[var(--accent)] transition-all">✨</div>
-          <h3 class="text-xl font-bold font-['Playfair_Display'] mb-4 text-[var(--primary)]">Authentic Magic</h3>
-          <p class="text-gray-600 leading-relaxed">We skip the tourist traps to deliver genuine connections, seamless logistics, and Priority Access at all major monuments.</p>
+        <div class="value-card">
+          <div class="value-icon">✨</div>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:700; color:var(--primary); margin-bottom:1rem;">Authentic Magic</h3>
+          <p style="color:#6c757d; line-height:1.7;">We skip the tourist traps to deliver genuine connections, seamless logistics, and Priority Access at all major monuments.</p>
         </div>
       </div>
     </div>
@@ -118,90 +114,198 @@ import Footer from '../components/Footer.astro';
   <!-- Photo Mosaic -->
   <section class="py-20 bg-white">
     <div class="container">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 h-[600px]">
-        <div class="col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-md group">
-          <img src="https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?w=800&q=80" alt="Barcelona street" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+      <div class="photo-mosaic">
+        <div class="mosaic-large photo-zoom">
+          <img src="https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?w=800&q=80" alt="Barcelona street" />
         </div>
-        <div class="rounded-2xl overflow-hidden shadow-md group">
-          <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=500&q=80" alt="Gothic detail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="mosaic-sm photo-zoom">
+          <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=500&q=80" alt="Gothic detail" />
         </div>
-        <div class="row-span-2 rounded-2xl overflow-hidden shadow-md group">
-          <img src="https://images.unsplash.com/photo-1579282240050-352db0a14c21?w=500&q=80" alt="Park Guell" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="mosaic-tall photo-zoom">
+          <img src="https://images.unsplash.com/photo-1579282240050-352db0a14c21?w=500&q=80" alt="Park Guell" />
         </div>
-        <div class="rounded-2xl overflow-hidden shadow-md group">
-          <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=500&q=80" alt="Sagrada" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="mosaic-sm photo-zoom">
+          <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=500&q=80" alt="Sagrada" />
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-24 bg-[var(--primary)] text-center text-white">
+  <section class="py-24 text-center text-white" style="background:var(--primary);">
     <div class="container">
-      <h2 class="text-4xl font-['Playfair_Display'] font-bold mb-6">Ready to explore Barcelona?</h2>
-      <p class="text-xl font-light mb-10 max-w-2xl mx-auto opacity-90">Join us for a journey through history, art, and the vibrant life of Catalonia's capital.</p>
-      <a href="/" class="inline-block bg-[var(--gold)] text-[var(--primary)] px-10 py-4 rounded-full font-bold text-lg hover:bg-white transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">Book Your Tour</a>
+      <h2 style="font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3rem); font-weight:700; margin-bottom:1.5rem;">Ready to explore Barcelona?</h2>
+      <p style="font-size:1.25rem; font-weight:300; margin-bottom:2.5rem; max-width:40rem; margin-left:auto; margin-right:auto; opacity:0.9;">Join us for a journey through history, art, and the vibrant life of Catalonia's capital.</p>
+      <a href="/" style="display:inline-block; background:var(--gold); color:var(--primary); padding:1rem 2.5rem; border-radius:9999px; font-weight:700; font-size:1.125rem; text-decoration:none; transition:all 0.3s; box-shadow:0 4px 20px rgba(212,168,83,0.4);">Book Your Tour</a>
     </div>
   </section>
 
   <Footer slot="footer" />
-
-  <style>
-    @keyframes pan {
-      0% { transform: scale(1.05) translate(0, 0); }
-      50% { transform: scale(1.1) translate(-2%, 2%); }
-      100% { transform: scale(1.05) translate(0, 0); }
-    }
-    .animate-pan {
-      animation: pan 30s ease-in-out infinite;
-    }
-    
-    @keyframes fade-up {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-up {
-      animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-  </style>
-
-  <script>
-    // Counter Animation Logic
-    document.addEventListener('DOMContentLoaded', () => {
-      const counters = document.querySelectorAll('.counter');
-      const decimalCounters = document.querySelectorAll('.counter-decimal');
-      
-      const runCounter = (el, isDecimal = false) => {
-        const target = parseFloat(el.getAttribute('data-target'));
-        const duration = 2000; // ms
-        const steps = 60;
-        const stepTime = Math.abs(Math.floor(duration / steps));
-        const increment = target / steps;
-        let current = 0;
-        
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            el.innerText = isDecimal ? target.toFixed(1) : Math.floor(target);
-            clearInterval(timer);
-          } else {
-            el.innerText = isDecimal ? current.toFixed(1) : Math.floor(current);
-          }
-        }, stepTime);
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            counters.forEach(c => runCounter(c, false));
-            decimalCounters.forEach(c => runCounter(c, true));
-            observer.disconnect(); // Run once
-          }
-        });
-      }, { threshold: 0.5 });
-
-      const container = document.getElementById('stats-container');
-      if(container) observer.observe(container);
-    });
-  </script>
 </Layout>
+
+<style is:global>
+  .about-hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--primary);
+    color: white;
+    padding-top: 5rem;
+  }
+  .about-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .about-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,22,40,0.7), rgba(10,22,40,0.5), rgba(10,22,40,0.85));
+    z-index: 1;
+  }
+  .hero-img-pan {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: pan 30s ease-in-out infinite;
+  }
+  .about-hero-content {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 300;
+    max-width: 40rem;
+    margin: 0 auto;
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+  .stats-section {
+    background: var(--primary);
+    position: relative;
+    overflow: hidden;
+  }
+  .value-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.07);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  }
+  .value-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s, background 0.3s;
+  }
+  .value-card:hover .value-icon {
+    transform: scale(1.1);
+    background: var(--accent);
+  }
+  .photo-mosaic {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    height: 520px;
+  }
+  .mosaic-large {
+    grid-row: 1 / 3;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .mosaic-sm {
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .mosaic-tall {
+    grid-row: 1 / 3;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .photo-zoom img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .photo-zoom:hover img {
+    transform: scale(1.06);
+  }
+  @keyframes pan {
+    0%   { transform: scale(1.05) translate(0, 0); }
+    50%  { transform: scale(1.1) translate(-2%, 2%); }
+    100% { transform: scale(1.05) translate(0, 0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 640px) {
+    .photo-mosaic {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      height: auto;
+    }
+    .mosaic-large { grid-row: auto; grid-column: 1 / 3; height: 220px; }
+    .mosaic-tall  { grid-row: auto; height: 200px; }
+    .mosaic-sm    { height: 160px; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const runCounter = (el: Element, isDecimal = false) => {
+      const target = parseFloat((el as HTMLElement).dataset.target || '0');
+      const steps = 60;
+      const stepTime = Math.floor(2000 / steps);
+      const increment = target / steps;
+      let current = 0;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          (el as HTMLElement).innerText = isDecimal ? target.toFixed(1) : String(Math.floor(target));
+          clearInterval(timer);
+        } else {
+          (el as HTMLElement).innerText = isDecimal ? current.toFixed(1) : String(Math.floor(current));
+        }
+      }, stepTime);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.counter').forEach(c => runCounter(c, false));
+          document.querySelectorAll('.counter-decimal').forEach(c => runCounter(c, true));
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const container = document.getElementById('stats-container');
+    if (container) observer.observe(container);
+  });
+</script>
