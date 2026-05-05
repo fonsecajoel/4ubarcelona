@@ -256,6 +256,8 @@ function setLanguage(lang) {
   });
 }
 
+window.setLanguage = setLanguage;
+
 function initLang() {
   const saved = localStorage.getItem('4u_lang') || 'en';
   setLanguage(saved);
