@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Sagrada Familia Tour">
+  <Navbar slot="navbar" scrolled={true} />
+  
+  
+
+  <section class="tour-hero">
+    <div class="tour-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=1920&q=80')"></div>
+    <div class="tour-hero-content">
+      <div class="container">
+        <span class="tour-card-tag">Semi-Private Tour</span>
+        <h1>Sagrada Familia</h1>
+        <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px;">Discover Gaudí's Masterpiece in an Intimate Setting. Maximum 9 guests.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="tour-details">
+        <div class="tour-info">
+          <h2>Semi-Private Tour of Sagrada Família</h2>
+          <p>Explore the world-famous Sagrada Família with a small group of just 9 guests. Designed for travelers who value quality over crowds, this semi-private experience offers deeper insight into the genius of Antoni Gaudí and his unfinished masterpiece.</p>
+
+          <div class="info-grid">
+            <div class="info-item">
+              <div class="icon">⏱</div>
+              <div><div class="label">Duration</div><div class="value">1.5 – 2 hours</div></div>
+            </div>
+            <div class="info-item">
+              <div class="icon">👥</div>
+              <div><div class="label">Group Size</div><div class="value">Max. 9 people</div></div>
+            </div>
+            <div class="info-item">
+              <div class="icon">🌐</div>
+              <div><div class="label">Languages</div><div class="value">EN, FR, PT, RU</div></div>
+            </div>
+            <div class="info-item">
+              <div class="icon">🎟</div>
+              <div><div class="label">Tickets</div><div class="value">Skip-the-line included</div></div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 40px;">Tour Highlights</h3>
+          <ul class="tour-highlights">
+            <li>Small group experience (maximum 9 participants)</li>
+            <li>Skip-the-line access to save time</li>
+            <li>Expert local guide specialized in Gaudí and Barcelona history</li>
+            <li>Immersive storytelling about symbolism, architecture, and history</li>
+            <li>Stunning interior visit with colorful stained-glass light</li>
+          </ul>
+
+          <h3 style="margin-top: 40px;">Itinerary</h3>
+          <div class="itinerary">
+            <div class="itinerary-step">
+              <div class="itinerary-number">1</div>
+              <div>
+                <h4>Meeting Point</h4>
+                <p>Conveniently located near the basilica. Meet your guide and begin with a short introduction to Gaudí's vision.</p>
+              </div>
+            </div>
+            <div class="itinerary-step">
+              <div class="itinerary-number">2</div>
+              <div>
+                <h4>Exterior Exploration</h4>
+                <p>Discover the intricate façades—Nativity, Passion, and Glory—and uncover their symbolic meanings.</p>
+              </div>
+            </div>
+            <div class="itinerary-step">
+              <div class="itinerary-number">3</div>
+              <div>
+                <h4>Interior Visit</h4>
+                <p>Step inside and experience the awe-inspiring columns, natural light effects, and unique architectural design inspired by nature.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 40px;">Optional Enhancements</h3>
+          <ul class="tour-highlights">
+            <li>Tower access for panoramic views of Barcelona</li>
+            <li>Extended Gaudí-focused tours</li>
+          </ul>
+
+          <div style="margin-top: 40px; padding: 24px; background: var(--gray-100); border-radius: var(--radius-sm);">
+            <p><strong>Dress Code:</strong> Appropriate attire required (religious site)</p>
+            <p style="margin-top: 8px;"><strong>Accessibility:</strong> Please inquire for specific needs</p>
+          </div>
+        </div>
+
+        <div class="tour-booking">
+          <h3>Book Your Experience</h3>
+          <p style="text-align:center; color: var(--gray-600); margin-bottom: 24px;">Limited availability – advance booking recommended</p>
+          <form>
+            <div class="form-group">
+              <label>Date</label>
+              <input type="date" required>
+            </div>
+            <div class="form-group">
+              <label>Number of Guests (Max 9)</label>
+              <select required>
+                <option value="">Select</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Tour Type</label>
+              <select required>
+                <option value="semi-private">Semi-Private (Max 9)</option>
+                <option value="private">Private Tour</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Language</label>
+              <select required>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="pt">Português</option>
+                <option value="ru">Русский</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" required>
+            </div>
+            <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;" data-i18n="book_now">Book Now</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <script src="/scripts/booking.js" type="module"></script>
+  <Footer slot="footer" />
+</Layout>

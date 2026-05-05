@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Contact Us">
+  <Navbar slot="navbar" scrolled={true} />
+  
+  
+
+  <div class="contact-hero">
+    <div class="contact-hero-content">
+      <h1>Get In Touch</h1>
+      <p>We'd love to hear from you. Our team responds within 24 hours.</p>
+    </div>
+  </div>
+
+  <div class="contact-body">
+    <div class="container">
+      <div class="contact-card-row fade-in">
+        <div class="contact-info-card">
+          <div class="card-icon">✉️</div>
+          <h3>Email Us</h3>
+          <a href="mailto:info@4ubarcelona.com">info@4ubarcelona.com</a>
+        </div>
+        <div class="contact-info-card">
+          <div class="card-icon">📞</div>
+          <h3>Call Us</h3>
+          <a href="tel:+34663331088">+34 663 331 088</a>
+        </div>
+        <div class="contact-info-card">
+          <div class="card-icon">📍</div>
+          <h3>Based In</h3>
+          <p>Barcelona, Spain</p>
+        </div>
+      </div>
+
+      <div class="contact-main-grid">
+        <div class="contact-side fade-in">
+          <h2>Let's Plan Your <span class="text-accent">Barcelona Experience</span></h2>
+          <p>Whether you have a question about one of our tours, need a custom group experience, or simply want to know more about Barcelona — we're here for you.</p>
+
+          <div class="contact-social-row">
+            <a href="https://www.instagram.com/4ubarcelona/" target="_blank" class="contact-social-btn">📷 Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61564466648421" target="_blank" class="contact-social-btn">📘 Facebook</a>
+            <a href="https://www.tiktok.com/@4ubarcelona" target="_blank" class="contact-social-btn">🎵 TikTok</a>
+          </div>
+
+          <div class="hours-table">
+            <h4>Response Hours</h4>
+            <div class="hours-row"><span class="day">Monday – Friday</span><span class="time">9:00 – 20:00</span></div>
+            <div class="hours-row"><span class="day">Saturday</span><span class="time">10:00 – 18:00</span></div>
+            <div class="hours-row"><span class="day">Sunday</span><span class="time">10:00 – 15:00</span></div>
+          </div>
+        </div>
+
+        <div class="contact-form-card fade-in">
+          <h2>Send Us a Message</h2>
+          <p>Fill in the form below and we'll get back to you as soon as possible.</p>
+
+          <form id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="John" required>
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Doe" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <select>
+                <option value="">Select a topic…</option>
+                <option>Sagrada Familia Tour</option>
+                <option>Park Güell Tour</option>
+                <option>Gothic Quarter Tour</option>
+                <option>Bike Tour</option>
+                <option>Private Group Booking</option>
+                <option>General Question</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea rows="5" placeholder="Tell us about your trip, group size, preferred dates…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Message →</button>
+          </form>
+
+          <div class="form-success" id="form-success">
+            <div class="checkmark">✅</div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out. We'll reply to your email within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <Footer slot="footer" />
+</Layout>

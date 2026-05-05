@@ -1,0 +1,170 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="BCN Guide">
+  <Navbar slot="navbar" scrolled={true} />
+  
+  
+
+  <div class="guide-hero">
+    <div class="guide-hero-content">
+      <h1>Discover Barcelona</h1>
+      <p>A local guide to food, culture, neighbourhoods and hidden gems — curated by our expert team.</p>
+      <div class="guide-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="culture">Culture & Events</button>
+        <button class="filter-btn" data-filter="food">Food & Drinks</button>
+        <button class="filter-btn" data-filter="areas">Areas & Neighbourhoods</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="guide-body">
+    <div class="container">
+      <div class="guide-grid" id="guide-grid">
+
+        <div class="guide-card guide-featured fade-in" data-category="culture" onclick="openArticle('catalan-culture')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739013005709-TRK2BPIRSF38L4TIPL37/Cultura%2BCatalana.jpg" alt="Catalan Culture">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-culture">Culture & Events</span>
+            <h3>Catalan Culture: an Introduction</h3>
+            <p>An insight into Catalan culture, its language, traditions, and the proud spirit of its people. Discover what makes Catalonia truly unique in the heart of Europe.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 6, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="areas" onclick="openArticle('tibidabo')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739014608149-JBJOGQGKKHDH2241N4Y6/Tibidabo.png" alt="Tibidabo">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-areas">Areas & Neighbourhoods</span>
+            <h3>Tibidabo</h3>
+            <p>Perched above Barcelona, Tibidabo offers stunning panoramic views of the city and surrounding landscape.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 5, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="food" onclick="openArticle('catalan-food')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/70e5a9b5-b199-499d-917a-2081438a86e1/Calcots.png" alt="Catalan Food">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-food">Food & Drinks</span>
+            <h3>Catalan Food: an Introduction</h3>
+            <p>From fresh Mediterranean ingredients to creative dishes, Catalan gastronomy offers a unique taste of the region's culture and history.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 6, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="food" onclick="openArticle('cava-vermut')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1737038869825-MUNGNW0IYNDZFIH0SOXE/kamila-maciejewska-UBX5-_ajTXw-unsplash.jpg" alt="Cava and Vermut">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-food">Food & Drinks</span>
+            <h3>Cava & the Art of Vermut</h3>
+            <p>From the crisp bubbles of cava to the ritual of vermut and the diverse flavors of the region's celebrated wines.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 4, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="culture" onclick="openArticle('sant-jordi')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015158764-ZYDQNH6U0R480HQLQ4HJ/Sant+Jordi.jpg" alt="Sant Jordi">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-culture">Culture & Events</span>
+            <h3>Sant Jordi's Day</h3>
+            <p>Celebrate love, literature, and Catalan culture on Sant Jordi's Day, when the city's streets fill with bookstalls and roses.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 3, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="areas" onclick="openArticle('gracia')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/d1d55c6d-a233-4b80-9423-46acf648a5e7/jovana-jelovac-6dBACFmei4I-unsplash.jpg" alt="Gracia District">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-areas">Areas & Neighbourhoods</span>
+            <h3>Gràcia District</h3>
+            <p>Explore Gràcia, a Barcelona neighbourhood where narrow streets, bustling plazas, and a local, artistic spirit invite you to wander.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 2, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="culture" onclick="openArticle('palau-musica')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015570792-PF2W2VIXVBJBTUTH3VUZ/Palau+de+la+Musica.png" alt="Palau de la Musica">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-culture">Culture & Events</span>
+            <h3>Palau de la Música Catalana</h3>
+            <p>A masterpiece of Modernism by Lluís Domènech i Montaner, nestled on a side street in the heart of the city.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Feb 1, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="areas" onclick="openArticle('barceloneta')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015707494-14ID0I9HID7628HD50SG/Barceloneta.png" alt="Barceloneta">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-areas">Areas & Neighbourhoods</span>
+            <h3>Barceloneta</h3>
+            <p>Where the Mediterranean Sea meets urban energy — lively promenades, seafood, and a stunning coastline.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Jan 31, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-card fade-in" data-category="food" onclick="openArticle('desserts')">
+          <div class="guide-card-img">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1738856520931-2MAI04OO1O0DLZNR87HG/pexels-leeloothefirst-5255957.jpg" alt="Desserts">
+          </div>
+          <div class="guide-card-body">
+            <span class="guide-card-cat cat-food">Food & Drinks</span>
+            <h3>Desserts & Treats</h3>
+            <p>From Churros to Crema Catalana: discover the sweet traditions that make this region so irresistible.</p>
+            <div class="guide-card-meta">
+              <span>Isabel Hachmann · Jan 30, 2025</span>
+              <a class="guide-card-read">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  
+  <Footer slot="footer" />
+</Layout>

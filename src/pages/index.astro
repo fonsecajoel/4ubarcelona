@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Premium Guided Tours">
+  <Navbar slot="navbar" />
+
+  <section class="hero">
+    <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1920&q=80')"></div>
+    <div class="hero-content">
+      <h1 data-i18n="hero_title">Discover Barcelona <span class="text-accent">Like Never Before</span></h1>
+      <p data-i18n="hero_sub">Premium semi-private & private tours with expert local guides. Maximum 9 guests.</p>
+      <a href="#tours" class="btn btn-primary" data-i18n="hero_cta">Explore Tours</a>
+    </div>
+    <div class="hero-scroll"><span></span></div>
+  </section>
+
+  <section id="tours">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 data-i18n="section_tours">Our Experiences</h2>
+        <div class="section-line"></div>
+        <p data-i18n="section_tours_sub">Handcrafted tours designed for travelers who value authenticity and depth</p>
+      </div>
+      <div class="tours-grid">
+        <a href="/sagrada-familia.html" class="tour-card fade-in">
+          <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=600&q=80" alt="Sagrada Familia">
+          <div class="tour-card-overlay">
+            <span class="tour-card-tag">Semi-Private</span>
+            <h3>Sagrada Familia</h3>
+            <p>Gaudí's masterpiece in an intimate setting. Max 9 guests.</p>
+          </div>
+        </a>
+        <a href="/park-guell.html" class="tour-card fade-in">
+          <img src="https://images.unsplash.com/photo-1579282240050-352db0a14c21?w=600&q=80" alt="Park Güell">
+          <div class="tour-card-overlay">
+            <span class="tour-card-tag">Private</span>
+            <h3>Park Güell</h3>
+            <p>Gaudí's colorful mosaic wonderland. Exclusive private tour.</p>
+          </div>
+        </a>
+        <a href="/gothic-quarter.html" class="tour-card fade-in">
+          <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80" alt="Gothic Quarter">
+          <div class="tour-card-overlay">
+            <span class="tour-card-tag">Private</span>
+            <h3>Gothic Quarter</h3>
+            <p>2000 years of history through medieval streets.</p>
+          </div>
+        </a>
+        <a href="/bike-tour.html" class="tour-card fade-in">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="Bike Tour">
+          <div class="tour-card-overlay">
+            <span class="tour-card-tag">Private</span>
+            <h3>Bike Tour</h3>
+            <p>Explore Barcelona's coast and parks on two wheels.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--gray-100);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 data-i18n="section_why">Why Choose 4U Barcelona</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="features-grid">
+        <div class="feature-item fade-in">
+          <div class="feature-icon">👥</div>
+          <h3 data-i18n="feat_small">Small Groups</h3>
+          <p data-i18n="feat_small_desc">Maximum 9 people for an intimate, personalized experience</p>
+        </div>
+        <div class="feature-item fade-in">
+          <div class="feature-icon">🎓</div>
+          <h3 data-i18n="feat_expert">Expert Guides</h3>
+          <p data-i18n="feat_expert_desc">Passionate local historians with 20+ years of experience</p>
+        </div>
+        <div class="feature-item fade-in">
+          <div class="feature-icon">⚡</div>
+          <h3 data-i18n="feat_skip">Skip the Line</h3>
+          <p data-i18n="feat_skip_desc">Priority access included on all our tours</p>
+        </div>
+        <div class="feature-item fade-in">
+          <div class="feature-icon">🔒</div>
+          <h3 data-i18n="feat_private">Private Options</h3>
+          <p data-i18n="feat_private_desc">Exclusive private tours available for all experiences</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
