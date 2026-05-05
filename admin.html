@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | 4U Barcelona</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen">
+    <div class="login-box">
+      <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/3eef1a0d-78be-4186-bd56-726dcaa5ebf6/4U_logo_vectoritzat_sense_fons_blau.png?format=300w" alt="4U Barcelona" class="login-logo">
+      <h2>Admin Panel</h2>
+      <p>Access restricted to authorized users</p>
+      <form id="login-form">
+        <div class="login-field">
+          <label>Username</label>
+          <input type="text" id="login-user" placeholder="admin" autocomplete="off">
+        </div>
+        <div class="login-field">
+          <label>Password</label>
+          <input type="password" id="login-pass" placeholder="••••••••">
+        </div>
+        <div id="login-error" class="login-error" style="display:none">❌ Invalid credentials</div>
+        <button type="submit" class="btn-login">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD -->
+  <div id="admin-panel" style="display:none">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/3eef1a0d-78be-4186-bd56-726dcaa5ebf6/4U_logo_vectoritzat_sense_fons_blau.png?format=300w" alt="4U Barcelona">
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-section="dashboard">
+          <span class="nav-icon">📊</span> Dashboard
+        </button>
+        <button class="nav-item" data-section="tours">
+          <span class="nav-icon">🗺️</span> Tours
+        </button>
+        <button class="nav-item" data-section="bookings">
+          <span class="nav-icon">📅</span> Bookings
+        </button>
+        <button class="nav-item" data-section="prices">
+          <span class="nav-icon">💶</span> Prices
+        </button>
+        <button class="nav-item" data-section="availability">
+          <span class="nav-icon">🟢</span> Availability
+        </button>
+        <button class="nav-item" data-section="content">
+          <span class="nav-icon">✏️</span> Content
+        </button>
+        <button class="nav-item" data-section="settings">
+          <span class="nav-icon">⚙️</span> Settings
+        </button>
+      </nav>
+      <button class="sidebar-logout" onclick="logout()">🚪 Logout</button>
+    </aside>
+
+    <!-- Main -->
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <h1 id="section-title">Dashboard</h1>
+        <div class="topbar-right">
+          <span class="admin-badge">👑 Super Admin</span>
+          <a href="index.html" target="_blank" class="btn-view-site">View Site →</a>
+        </div>
+      </div>
+
+      <!-- DASHBOARD -->
+      <section id="section-dashboard" class="admin-section active">
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-icon">📋</div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-bookings">0</div>
+              <div class="stat-label">Total Bookings</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🗺️</div>
+            <div class="stat-info">
+              <div class="stat-value">4</div>
+              <div class="stat-label">Active Tours</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-guests">0</div>
+              <div class="stat-label">Total Guests</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">💶</div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-revenue">€0</div>
+              <div class="stat-label">Est. Revenue</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-grid">
+          <div class="dash-card">
+            <h3>Recent Bookings</h3>
+            <div id="recent-bookings-list" class="booking-list"></div>
+          </div>
+          <div class="dash-card">
+            <h3>Quick Actions</h3>
+            <div class="quick-actions">
+              <button onclick="switchSection('tours')" class="quick-btn">✏️ Edit Tours</button>
+              <button onclick="switchSection('prices')" class="quick-btn">💶 Update Prices</button>
+              <button onclick="switchSection('availability')" class="quick-btn">🟢 Set Availability</button>
+              <button onclick="switchSection('bookings')" class="quick-btn">📅 View All Bookings</button>
+              <button onclick="exportData()" class="quick-btn">📤 Export Data</button>
+              <button onclick="clearBookings()" class="quick-btn danger">🗑️ Clear Bookings</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOURS -->
+      <section id="section-tours" class="admin-section">
+        <div class="section-header-bar">
+          <p>Edit tour names, descriptions, hero images and tags.</p>
+        </div>
+        <div id="tours-editor" class="tours-editor"></div>
+      </section>
+
+      <!-- BOOKINGS -->
+      <section id="section-bookings" class="admin-section">
+        <div class="section-header-bar">
+          <p>All booking submissions from the website forms.</p>
+          <button onclick="exportData()" class="btn-action">📤 Export CSV</button>
+        </div>
+        <div class="table-wrap">
+          <table id="bookings-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Tour</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>Guests</th>
+                <th>Type</th>
+                <th>Lang</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="bookings-tbody"></tbody>
+          </table>
+          <div id="no-bookings" class="empty-state">No bookings yet. They'll appear here when visitors book on the site.</div>
+        </div>
+      </section>
+
+      <!-- PRICES -->
+      <section id="section-prices" class="admin-section">
+        <div class="section-header-bar">
+          <p>Set pricing per tour and type. Prices are shown in booking forms and tour pages.</p>
+          <button onclick="savePrices()" class="btn-action">💾 Save Prices</button>
+        </div>
+        <div id="prices-editor" class="prices-editor"></div>
+      </section>
+
+      <!-- AVAILABILITY -->
+      <section id="section-availability" class="admin-section">
+        <div class="section-header-bar">
+          <p>Block dates or set tours as active / paused.</p>
+          <button onclick="saveAvailability()" class="btn-action">💾 Save</button>
+        </div>
+        <div id="availability-editor" class="availability-editor"></div>
+      </section>
+
+      <!-- CONTENT -->
+      <section id="section-content" class="admin-section">
+        <div class="section-header-bar">
+          <p>Edit site-wide texts: hero headline, about text, contact info.</p>
+          <button onclick="saveContent()" class="btn-action">💾 Save Content</button>
+        </div>
+        <div class="content-editor">
+          <div class="field-group">
+            <label>Hero Headline</label>
+            <input type="text" id="content-hero-title" placeholder="Discover Barcelona Like Never Before">
+          </div>
+          <div class="field-group">
+            <label>Hero Subtitle</label>
+            <input type="text" id="content-hero-sub" placeholder="Premium semi-private & private tours...">
+          </div>
+          <div class="field-group">
+            <label>About Us Text</label>
+            <textarea id="content-about" rows="6" placeholder="Born out of a deep love..."></textarea>
+          </div>
+          <div class="field-group">
+            <label>Contact Email</label>
+            <input type="email" id="content-email" placeholder="info@4ubarcelona.com">
+          </div>
+          <div class="field-group">
+            <label>Contact Phone</label>
+            <input type="text" id="content-phone" placeholder="+34 663 331 088">
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="section-settings" class="admin-section">
+        <div class="section-header-bar">
+          <p>Manage admin credentials and site preferences.</p>
+        </div>
+        <div class="settings-grid">
+          <div class="settings-card">
+            <h3>🔐 Change Password</h3>
+            <div class="field-group">
+              <label>Current Password</label>
+              <input type="password" id="curr-pass">
+            </div>
+            <div class="field-group">
+              <label>New Password</label>
+              <input type="password" id="new-pass">
+            </div>
+            <div class="field-group">
+              <label>Confirm New Password</label>
+              <input type="password" id="confirm-pass">
+            </div>
+            <button onclick="changePassword()" class="btn-action">Update Password</button>
+            <div id="pass-msg" style="margin-top:10px; font-size:0.85rem;"></div>
+          </div>
+          <div class="settings-card">
+            <h3>🌐 Social Links</h3>
+            <div class="field-group">
+              <label>Instagram URL</label>
+              <input type="text" id="social-ig" value="https://www.instagram.com/4ubarcelona/">
+            </div>
+            <div class="field-group">
+              <label>Facebook URL</label>
+              <input type="text" id="social-fb" value="https://www.facebook.com/profile.php?id=61564466648421">
+            </div>
+            <div class="field-group">
+              <label>TikTok URL</label>
+              <input type="text" id="social-tt" value="https://www.tiktok.com/@4ubarcelona">
+            </div>
+            <button onclick="saveSocials()" class="btn-action">Save Links</button>
+          </div>
+          <div class="settings-card">
+            <h3>🗑️ Data Management</h3>
+            <p style="color:var(--muted); margin-bottom:16px; font-size:0.9rem;">Danger zone — irreversible actions.</p>
+            <button onclick="clearBookings()" class="btn-action danger" style="margin-bottom:10px; width:100%;">Clear All Bookings</button>
+            <button onclick="resetAll()" class="btn-action danger" style="width:100%;">Reset All Settings</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
