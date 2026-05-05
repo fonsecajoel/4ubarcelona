@@ -6,165 +6,290 @@ import Footer from '../components/Footer.astro';
 
 <Layout title="BCN Guide">
   <Navbar slot="navbar" scrolled={true} />
-  
-  
 
-  <div class="guide-hero">
-    <div class="guide-hero-content">
-      <h1>Discover Barcelona</h1>
-      <p>A local guide to food, culture, neighbourhoods and hidden gems — curated by our expert team.</p>
-      <div class="guide-filter">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="culture">Culture & Events</button>
-        <button class="filter-btn" data-filter="food">Food & Drinks</button>
-        <button class="filter-btn" data-filter="areas">Areas & Neighbourhoods</button>
+  <!-- Hero -->
+  <section style="background:var(--primary); padding-top:6rem; padding-bottom:4rem; text-align:center; color:white; position:relative; overflow:hidden;">
+    <div style="position:absolute;inset:0;opacity:0.06;background-image:radial-gradient(circle at 2px 2px, white 1px, transparent 0);background-size:32px 32px;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,7vw,5rem);font-weight:700;margin-bottom:1rem;" data-i18n="guide_title">Discover Barcelona</h1>
+      <p style="font-size:1.2rem;font-weight:300;opacity:0.85;max-width:600px;margin:0 auto 2.5rem;" data-i18n="guide_sub">A local guide to food, culture, neighbourhoods and hidden gems — curated by our expert team.</p>
+      <div id="filter-bar" style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;">
+        <button class="filter-btn active-filter" data-filter="all" data-i18n="guide_all">All</button>
+        <button class="filter-btn" data-filter="culture" data-i18n="guide_culture">Culture & Events</button>
+        <button class="filter-btn" data-filter="food" data-i18n="guide_food">Food & Drinks</button>
+        <button class="filter-btn" data-filter="areas" data-i18n="guide_areas">Areas & Neighbourhoods</button>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="guide-body">
+  <!-- Cards Grid -->
+  <section style="padding:4rem 0 6rem;background:#f8f9fa;">
     <div class="container">
-      <div class="guide-grid" id="guide-grid">
+      <div id="guide-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem;">
 
-        <div class="guide-card guide-featured fade-in" data-category="culture" onclick="openArticle('catalan-culture')">
+        <article class="guide-card guide-featured fade-in" data-category="culture" onclick="openArticle('catalan-culture')">
           <div class="guide-card-img">
-            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739013005709-TRK2BPIRSF38L4TIPL37/Cultura%2BCatalana.jpg" alt="Catalan Culture">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739013005709-TRK2BPIRSF38L4TIPL37/Cultura%2BCatalana.jpg" alt="Catalan Culture" loading="lazy" />
           </div>
           <div class="guide-card-body">
-            <span class="guide-card-cat cat-culture">Culture & Events</span>
+            <span class="guide-tag tag-culture">Culture & Events</span>
             <h3>Catalan Culture: an Introduction</h3>
             <p>An insight into Catalan culture, its language, traditions, and the proud spirit of its people. Discover what makes Catalonia truly unique in the heart of Europe.</p>
-            <div class="guide-card-meta">
+            <div class="guide-meta">
               <span>Isabel Hachmann · Feb 6, 2025</span>
-              <a class="guide-card-read">Read more →</a>
+              <span class="read-more">Read more →</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="guide-card fade-in" data-category="areas" onclick="openArticle('tibidabo')">
+        <article class="guide-card fade-in" data-category="areas" onclick="openArticle('tibidabo')">
           <div class="guide-card-img">
-            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739014608149-JBJOGQGKKHDH2241N4Y6/Tibidabo.png" alt="Tibidabo">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739014608149-JBJOGQGKKHDH2241N4Y6/Tibidabo.png" alt="Tibidabo" loading="lazy" />
           </div>
           <div class="guide-card-body">
-            <span class="guide-card-cat cat-areas">Areas & Neighbourhoods</span>
+            <span class="guide-tag tag-areas">Areas & Neighbourhoods</span>
             <h3>Tibidabo</h3>
             <p>Perched above Barcelona, Tibidabo offers stunning panoramic views of the city and surrounding landscape.</p>
-            <div class="guide-card-meta">
+            <div class="guide-meta">
               <span>Isabel Hachmann · Feb 5, 2025</span>
-              <a class="guide-card-read">Read more →</a>
+              <span class="read-more">Read more →</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="guide-card fade-in" data-category="food" onclick="openArticle('catalan-food')">
+        <article class="guide-card fade-in" data-category="food" onclick="openArticle('catalan-food')">
           <div class="guide-card-img">
-            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/70e5a9b5-b199-499d-917a-2081438a86e1/Calcots.png" alt="Catalan Food">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/70e5a9b5-b199-499d-917a-2081438a86e1/Calcots.png" alt="Catalan Food" loading="lazy" />
           </div>
           <div class="guide-card-body">
-            <span class="guide-card-cat cat-food">Food & Drinks</span>
+            <span class="guide-tag tag-food">Food & Drinks</span>
             <h3>Catalan Food: an Introduction</h3>
             <p>From fresh Mediterranean ingredients to creative dishes, Catalan gastronomy offers a unique taste of the region's culture and history.</p>
-            <div class="guide-card-meta">
+            <div class="guide-meta">
               <span>Isabel Hachmann · Feb 6, 2025</span>
-              <a class="guide-card-read">Read more →</a>
+              <span class="read-more">Read more →</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="guide-card fade-in" data-category="food" onclick="openArticle('cava-vermut')">
+        <article class="guide-card fade-in" data-category="food" onclick="openArticle('cava-vermut')">
           <div class="guide-card-img">
-            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1737038869825-MUNGNW0IYNDZFIH0SOXE/kamila-maciejewska-UBX5-_ajTXw-unsplash.jpg" alt="Cava and Vermut">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1737038869825-MUNGNW0IYNDZFIH0SOXE/kamila-maciejewska-UBX5-_ajTXw-unsplash.jpg" alt="Cava and Vermut" loading="lazy" />
           </div>
           <div class="guide-card-body">
-            <span class="guide-card-cat cat-food">Food & Drinks</span>
+            <span class="guide-tag tag-food">Food & Drinks</span>
             <h3>Cava & the Art of Vermut</h3>
             <p>From the crisp bubbles of cava to the ritual of vermut and the diverse flavors of the region's celebrated wines.</p>
-            <div class="guide-card-meta">
+            <div class="guide-meta">
               <span>Isabel Hachmann · Feb 4, 2025</span>
-              <a class="guide-card-read">Read more →</a>
+              <span class="read-more">Read more →</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="guide-card fade-in" data-category="culture" onclick="openArticle('sant-jordi')">
+        <article class="guide-card fade-in" data-category="culture" onclick="openArticle('sant-jordi')">
           <div class="guide-card-img">
-            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015158764-ZYDQNH6U0R480HQLQ4HJ/Sant+Jordi.jpg" alt="Sant Jordi">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015158764-ZYDQNH6U0R480HQLQ4HJ/Sant+Jordi.jpg" alt="Sant Jordi" loading="lazy" />
           </div>
           <div class="guide-card-body">
-            <span class="guide-card-cat cat-culture">Culture & Events</span>
+            <span class="guide-tag tag-culture">Culture & Events</span>
             <h3>Sant Jordi's Day</h3>
             <p>Celebrate love, literature, and Catalan culture on Sant Jordi's Day, when the city's streets fill with bookstalls and roses.</p>
-            <div class="guide-card-meta">
+            <div class="guide-meta">
               <span>Isabel Hachmann · Feb 3, 2025</span>
-              <a class="guide-card-read">Read more →</a>
+              <span class="read-more">Read more →</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="guide-card fade-in" data-category="areas" onclick="openArticle('gracia')">
+        <article class="guide-card fade-in" data-category="areas" onclick="openArticle('gracia')">
           <div class="guide-card-img">
-            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/d1d55c6d-a233-4b80-9423-46acf648a5e7/jovana-jelovac-6dBACFmei4I-unsplash.jpg" alt="Gracia District">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/d1d55c6d-a233-4b80-9423-46acf648a5e7/jovana-jelovac-6dBACFmei4I-unsplash.jpg" alt="Gracia District" loading="lazy" />
           </div>
           <div class="guide-card-body">
-            <span class="guide-card-cat cat-areas">Areas & Neighbourhoods</span>
+            <span class="guide-tag tag-areas">Areas & Neighbourhoods</span>
             <h3>Gràcia District</h3>
             <p>Explore Gràcia, a Barcelona neighbourhood where narrow streets, bustling plazas, and a local, artistic spirit invite you to wander.</p>
-            <div class="guide-card-meta">
+            <div class="guide-meta">
               <span>Isabel Hachmann · Feb 2, 2025</span>
-              <a class="guide-card-read">Read more →</a>
+              <span class="read-more">Read more →</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="guide-card fade-in" data-category="culture" onclick="openArticle('palau-musica')">
+        <article class="guide-card fade-in" data-category="culture" onclick="openArticle('palau-musica')">
           <div class="guide-card-img">
-            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015570792-PF2W2VIXVBJBTUTH3VUZ/Palau+de+la+Musica.png" alt="Palau de la Musica">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015570792-PF2W2VIXVBJBTUTH3VUZ/Palau+de+la+Musica.png" alt="Palau de la Musica" loading="lazy" />
           </div>
           <div class="guide-card-body">
-            <span class="guide-card-cat cat-culture">Culture & Events</span>
+            <span class="guide-tag tag-culture">Culture & Events</span>
             <h3>Palau de la Música Catalana</h3>
             <p>A masterpiece of Modernism by Lluís Domènech i Montaner, nestled on a side street in the heart of the city.</p>
-            <div class="guide-card-meta">
+            <div class="guide-meta">
               <span>Isabel Hachmann · Feb 1, 2025</span>
-              <a class="guide-card-read">Read more →</a>
+              <span class="read-more">Read more →</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="guide-card fade-in" data-category="areas" onclick="openArticle('barceloneta')">
+        <article class="guide-card fade-in" data-category="areas" onclick="openArticle('barceloneta')">
           <div class="guide-card-img">
-            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015707494-14ID0I9HID7628HD50SG/Barceloneta.png" alt="Barceloneta">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1739015707494-14ID0I9HID7628HD50SG/Barceloneta.png" alt="Barceloneta" loading="lazy" />
           </div>
           <div class="guide-card-body">
-            <span class="guide-card-cat cat-areas">Areas & Neighbourhoods</span>
+            <span class="guide-tag tag-areas">Areas & Neighbourhoods</span>
             <h3>Barceloneta</h3>
             <p>Where the Mediterranean Sea meets urban energy — lively promenades, seafood, and a stunning coastline.</p>
-            <div class="guide-card-meta">
+            <div class="guide-meta">
               <span>Isabel Hachmann · Jan 31, 2025</span>
-              <a class="guide-card-read">Read more →</a>
+              <span class="read-more">Read more →</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="guide-card fade-in" data-category="food" onclick="openArticle('desserts')">
+        <article class="guide-card fade-in" data-category="food" onclick="openArticle('desserts')">
           <div class="guide-card-img">
-            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1738856520931-2MAI04OO1O0DLZNR87HG/pexels-leeloothefirst-5255957.jpg" alt="Desserts">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b4bee26229ec4694469e21/1738856520931-2MAI04OO1O0DLZNR87HG/pexels-leeloothefirst-5255957.jpg" alt="Desserts" loading="lazy" />
           </div>
           <div class="guide-card-body">
-            <span class="guide-card-cat cat-food">Food & Drinks</span>
+            <span class="guide-tag tag-food">Food & Drinks</span>
             <h3>Desserts & Treats</h3>
             <p>From Churros to Crema Catalana: discover the sweet traditions that make this region so irresistible.</p>
-            <div class="guide-card-meta">
+            <div class="guide-meta">
               <span>Isabel Hachmann · Jan 30, 2025</span>
-              <a class="guide-card-read">Read more →</a>
+              <span class="read-more">Read more →</span>
             </div>
           </div>
-        </div>
+        </article>
 
       </div>
     </div>
-  </div>
+  </section>
 
-  
   <Footer slot="footer" />
 </Layout>
+
+<style is:global>
+  .filter-btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: transparent;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .filter-btn:hover, .filter-btn.active-filter {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+  .guide-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    border: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .guide-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.13);
+  }
+  .guide-featured {
+    grid-column: span 2;
+  }
+  @media (max-width: 700px) {
+    .guide-featured { grid-column: span 1; }
+  }
+  .guide-card-img {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+  }
+  .guide-featured .guide-card-img {
+    height: 280px;
+  }
+  .guide-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .guide-card:hover .guide-card-img img {
+    transform: scale(1.06);
+  }
+  .guide-card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .guide-card-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0.6rem 0 0.5rem;
+  }
+  .guide-card-body p {
+    color: #6c757d;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex: 1;
+  }
+  .guide-tag {
+    display: inline-block;
+    padding: 0.2rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .tag-culture { background: rgba(0,180,216,0.12); color: var(--accent); }
+  .tag-food    { background: rgba(212,168,83,0.15); color: var(--gold); }
+  .tag-areas   { background: rgba(10,22,40,0.08);   color: var(--primary); }
+  .guide-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #9ca3af;
+  }
+  .read-more {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+  function openArticle(slug: string) {
+    console.log('Article:', slug);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const btns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.guide-card') as NodeListOf<HTMLElement>;
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = (btn as HTMLElement).dataset.filter || 'all';
+        btns.forEach(b => b.classList.remove('active-filter'));
+        btn.classList.add('active-filter');
+        cards.forEach(card => {
+          const cat = card.dataset.category || '';
+          card.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
+        });
+      });
+    });
+  });
+</script>

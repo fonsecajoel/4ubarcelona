@@ -7,119 +7,106 @@ import Footer from '../components/Footer.astro';
 <Layout title="Contact Us">
   <Navbar slot="navbar" scrolled={true} />
 
-  <!-- Hero -->
-  <section class="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-20" style="background: var(--primary);">
-    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
-    <div class="relative z-10 text-center text-white px-6">
-      <h1 class="text-5xl md:text-7xl font-bold mb-4" style="font-family: 'Playfair Display', serif;">Get In Touch</h1>
-      <p class="text-xl font-light opacity-80 max-w-xl mx-auto">We'd love to hear from you. Our team responds within 24 hours.</p>
+  <section style="background:var(--primary);padding-top:6rem;padding-bottom:4rem;text-align:center;color:white;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;opacity:0.06;background-image:radial-gradient(circle at 2px 2px, white 1px, transparent 0);background-size:32px 32px;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,7vw,5rem);font-weight:700;margin-bottom:1rem;" data-i18n="contact_title">Get In Touch</h1>
+      <p style="font-size:1.2rem;font-weight:300;opacity:0.85;max-width:600px;margin:0 auto;" data-i18n="contact_sub">We'd love to hear from you. Our team responds within 24 hours.</p>
     </div>
   </section>
 
-  <!-- Info Cards -->
-  <section class="py-16 bg-gray-50">
+  <section style="padding:4rem 0 5rem;background:#f8f9fa;">
     <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-        <div class="bg-white rounded-2xl p-8 text-center shadow-md border border-gray-100 hover:-translate-y-1 transition-transform duration-300">
-          <div class="text-4xl mb-4">✉️</div>
-          <h3 class="font-bold text-lg mb-2" style="color: var(--primary); font-family: 'Playfair Display', serif;">Email Us</h3>
-          <a href="mailto:info@4ubarcelona.com" class="hover:underline" style="color: var(--accent);">info@4ubarcelona.com</a>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-bottom:3rem;">
+        <div style="background:white;border-radius:1rem;padding:2rem;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.07);border:1px solid #f0f0f0;">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">✉️</div>
+          <h3 style="font-family:'Playfair Display',serif;font-weight:700;color:var(--primary);margin-bottom:0.5rem;" data-i18n="contact_email_label">Email Us</h3>
+          <a href="mailto:info@4ubarcelona.com" style="color:var(--accent);text-decoration:none;font-weight:500;">info@4ubarcelona.com</a>
         </div>
-        <div class="bg-white rounded-2xl p-8 text-center shadow-md border border-gray-100 hover:-translate-y-1 transition-transform duration-300">
-          <div class="text-4xl mb-4">📞</div>
-          <h3 class="font-bold text-lg mb-2" style="color: var(--primary); font-family: 'Playfair Display', serif;">Call Us</h3>
-          <a href="tel:+34663331088" class="hover:underline" style="color: var(--accent);">+34 663 331 088</a>
+        <div style="background:white;border-radius:1rem;padding:2rem;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.07);border:1px solid #f0f0f0;">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">📞</div>
+          <h3 style="font-family:'Playfair Display',serif;font-weight:700;color:var(--primary);margin-bottom:0.5rem;" data-i18n="contact_phone_label">Call Us</h3>
+          <a href="tel:+34663331088" style="color:var(--accent);text-decoration:none;font-weight:500;">+34 663 331 088</a>
         </div>
-        <div class="bg-white rounded-2xl p-8 text-center shadow-md border border-gray-100 hover:-translate-y-1 transition-transform duration-300">
-          <div class="text-4xl mb-4">📍</div>
-          <h3 class="font-bold text-lg mb-2" style="color: var(--primary); font-family: 'Playfair Display', serif;">Based In</h3>
-          <p class="text-gray-600">Barcelona, Spain</p>
+        <div style="background:white;border-radius:1rem;padding:2rem;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.07);border:1px solid #f0f0f0;">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">📍</div>
+          <h3 style="font-family:'Playfair Display',serif;font-weight:700;color:var(--primary);margin-bottom:0.5rem;" data-i18n="contact_location_label">Based In</h3>
+          <p style="color:#6c757d;margin:0;">Barcelona, Spain</p>
         </div>
       </div>
 
-      <!-- Main Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <!-- Left: Info -->
-        <div class="space-y-8">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="contact-main-grid">
+
+        <div style="display:flex;flex-direction:column;gap:2rem;">
           <div>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4" style="font-family: 'Playfair Display', serif; color: var(--primary);">
-              Let's Plan Your <span style="color: var(--accent);">Barcelona Experience</span>
+            <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:var(--primary);margin-bottom:1rem;">
+              <span data-i18n="contact_plan_title">Let's Plan Your </span><span style="color:var(--accent);" data-i18n="contact_plan_highlight">Barcelona Experience</span>
             </h2>
-            <p class="text-gray-600 text-lg leading-relaxed">Whether you have a question about one of our tours, need a custom group experience, or simply want to know more about Barcelona — we're here for you.</p>
+            <p style="color:#6c757d;font-size:1.05rem;line-height:1.7;" data-i18n="contact_plan_desc">Whether you have a question about one of our tours, need a custom group experience, or simply want to know more about Barcelona — we're here for you.</p>
           </div>
-
-          <!-- Social -->
-          <div class="flex flex-wrap gap-3">
-            <a href="https://www.instagram.com/4ubarcelona/" target="_blank" class="flex items-center gap-2 px-5 py-3 rounded-full font-semibold text-sm transition-all hover:scale-105 hover:shadow-lg" style="background: var(--primary); color: white;">📷 Instagram</a>
-            <a href="https://www.facebook.com/profile.php?id=61564466648421" target="_blank" class="flex items-center gap-2 px-5 py-3 rounded-full font-semibold text-sm transition-all hover:scale-105 hover:shadow-lg" style="background: var(--primary); color: white;">📘 Facebook</a>
-            <a href="https://www.tiktok.com/@4ubarcelona" target="_blank" class="flex items-center gap-2 px-5 py-3 rounded-full font-semibold text-sm transition-all hover:scale-105 hover:shadow-lg" style="background: var(--primary); color: white;">🎵 TikTok</a>
+          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+            <a href="https://www.instagram.com/4ubarcelona/" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.25rem;border-radius:9999px;background:var(--primary);color:white;text-decoration:none;font-weight:600;font-size:0.9rem;">📷 Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61564466648421" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.25rem;border-radius:9999px;background:var(--primary);color:white;text-decoration:none;font-weight:600;font-size:0.9rem;">📘 Facebook</a>
+            <a href="https://www.tiktok.com/@4ubarcelona" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.25rem;border-radius:9999px;background:var(--primary);color:white;text-decoration:none;font-weight:600;font-size:0.9rem;">🎵 TikTok</a>
           </div>
-
-          <!-- Hours -->
-          <div class="bg-white rounded-2xl p-8 shadow-md border border-gray-100">
-            <h4 class="font-bold text-lg mb-4" style="color: var(--primary); font-family: 'Playfair Display', serif;">Response Hours</h4>
-            <div class="space-y-3">
-              <div class="flex justify-between py-2 border-b border-gray-100">
-                <span class="text-gray-600">Monday – Friday</span>
-                <span class="font-semibold" style="color: var(--primary);">9:00 – 20:00</span>
-              </div>
-              <div class="flex justify-between py-2 border-b border-gray-100">
-                <span class="text-gray-600">Saturday</span>
-                <span class="font-semibold" style="color: var(--primary);">10:00 – 18:00</span>
-              </div>
-              <div class="flex justify-between py-2">
-                <span class="text-gray-600">Sunday</span>
-                <span class="font-semibold" style="color: var(--primary);">10:00 – 15:00</span>
-              </div>
+          <div style="background:white;border-radius:1rem;padding:2rem;box-shadow:0 4px 20px rgba(0,0,0,0.07);border:1px solid #f0f0f0;">
+            <h4 style="font-family:'Playfair Display',serif;font-weight:700;color:var(--primary);margin-bottom:1.25rem;" data-i18n="contact_hours_title">Response Hours</h4>
+            <div style="display:flex;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid #f0f0f0;">
+              <span style="color:#6c757d;" data-i18n="contact_hours_weekday">Monday – Friday</span>
+              <span style="font-weight:600;color:var(--primary);">9:00 – 20:00</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid #f0f0f0;">
+              <span style="color:#6c757d;" data-i18n="contact_hours_sat">Saturday</span>
+              <span style="font-weight:600;color:var(--primary);">10:00 – 18:00</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:0.6rem 0;">
+              <span style="color:#6c757d;" data-i18n="contact_hours_sun">Sunday</span>
+              <span style="font-weight:600;color:var(--primary);">10:00 – 15:00</span>
             </div>
           </div>
         </div>
 
-        <!-- Right: Form -->
-        <div class="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-gray-100">
-          <h2 class="text-2xl font-bold mb-2" style="font-family: 'Playfair Display', serif; color: var(--primary);">Send Us a Message</h2>
-          <p class="text-gray-500 mb-8">Fill in the form below and we'll get back to you as soon as possible.</p>
-
-          <form id="contact-form" class="space-y-5">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div style="background:white;border-radius:1.25rem;padding:2.5rem;box-shadow:0 8px 40px rgba(0,0,0,0.1);border:1px solid #f0f0f0;">
+          <h2 style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;" data-i18n="contact_form_title">Send Us a Message</h2>
+          <p style="color:#9ca3af;margin-bottom:2rem;" data-i18n="contact_form_sub">Fill in the form below and we'll get back to you as soon as possible.</p>
+          <form id="contact-form" style="display:flex;flex-direction:column;gap:1.25rem;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
               <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1">First Name</label>
-                <input type="text" placeholder="John" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[var(--accent)] transition-colors text-gray-800" />
+                <label style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:0.35rem;" data-i18n="contact_firstname">First Name</label>
+                <input type="text" placeholder="John" required class="contact-input" />
               </div>
               <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1">Last Name</label>
-                <input type="text" placeholder="Doe" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[var(--accent)] transition-colors text-gray-800" />
+                <label style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:0.35rem;" data-i18n="contact_lastname">Last Name</label>
+                <input type="text" placeholder="Doe" required class="contact-input" />
               </div>
             </div>
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-1">Email Address</label>
-              <input type="email" placeholder="john@example.com" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[var(--accent)] transition-colors text-gray-800" />
+              <label style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:0.35rem;" data-i18n="contact_email">Email Address</label>
+              <input type="email" placeholder="john@example.com" required class="contact-input" />
             </div>
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-1">Subject</label>
-              <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[var(--accent)] transition-colors text-gray-800 bg-white">
-                <option value="">Select a topic…</option>
+              <label style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:0.35rem;" data-i18n="contact_subject">Subject</label>
+              <select class="contact-input">
+                <option value="" data-i18n="contact_subject_placeholder">Select a topic...</option>
                 <option>Sagrada Familia Tour</option>
-                <option>Park Güell Tour</option>
+                <option>Park Guell Tour</option>
                 <option>Gothic Quarter Tour</option>
                 <option>Bike Tour</option>
-                <option>Private Group Booking</option>
-                <option>General Question</option>
+                <option data-i18n="contact_subject_private">Private Group Booking</option>
+                <option data-i18n="contact_subject_general">General Question</option>
               </select>
             </div>
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-1">Message</label>
-              <textarea rows="5" placeholder="Tell us about your trip, group size, preferred dates…" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[var(--accent)] transition-colors text-gray-800 resize-none"></textarea>
+              <label style="display:block;font-size:0.85rem;font-weight:600;color:#374151;margin-bottom:0.35rem;" data-i18n="contact_message">Message</label>
+              <textarea rows="5" required class="contact-input" style="resize:none;" placeholder="Tell us about your trip, group size, preferred dates..."></textarea>
             </div>
-            <button type="submit" class="w-full py-4 rounded-xl font-bold text-lg transition-all hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5" style="background: var(--primary); color: white;">
-              Send Message →
-            </button>
+            <button type="submit" style="width:100%;padding:1rem;border-radius:0.75rem;background:var(--primary);color:white;font-weight:700;font-size:1rem;border:none;cursor:pointer;" data-i18n="contact_send">Send Message</button>
           </form>
-
-          <div id="form-success" class="hidden text-center py-8">
-            <div class="text-5xl mb-4">✅</div>
-            <h3 class="text-2xl font-bold mb-2" style="font-family: 'Playfair Display', serif; color: var(--primary);">Message Sent!</h3>
-            <p class="text-gray-500">Thank you for reaching out. We'll reply to your email within 24 hours.</p>
+          <div id="form-success" style="display:none;text-align:center;padding:3rem 1rem;">
+            <div style="font-size:3.5rem;margin-bottom:1rem;">✅</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;" data-i18n="contact_success_title">Message Sent!</h3>
+            <p style="color:#9ca3af;" data-i18n="contact_success_sub">Thank you for reaching out. We'll reply within 24 hours.</p>
           </div>
         </div>
       </div>
@@ -127,14 +114,33 @@ import Footer from '../components/Footer.astro';
   </section>
 
   <Footer slot="footer" />
-
-  <script>
-    const form = document.getElementById('contact-form') as HTMLFormElement;
-    const success = document.getElementById('form-success');
-    form?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      form.style.display = 'none';
-      success?.classList.remove('hidden');
-    });
-  </script>
 </Layout>
+
+<style is:global>
+  .contact-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.625rem;
+    border: 1.5px solid #e5e7eb;
+    outline: none;
+    font-size: 1rem;
+    color: #1f2937;
+    background: white;
+    transition: border-color 0.2s;
+    font-family: inherit;
+  }
+  .contact-input:focus { border-color: var(--accent); }
+  @media (max-width: 768px) {
+    .contact-main-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (form) form.style.display = 'none';
+    if (success) success.style.display = 'block';
+  });
+</script>
