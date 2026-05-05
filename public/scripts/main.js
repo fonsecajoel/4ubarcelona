@@ -4,11 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.navbar-nav');
 
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
-  });
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  }
 
-  if (hamburger) {
+  if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => {
       navMenu.classList.toggle('active');
       hamburger.classList.toggle('active');
@@ -18,17 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.1 });
-
   fadeEls.forEach(el => observer.observe(el));
 });
 
-// Multi-language support
-const translations = {
+var translations = {
   en: {
     nav_tours: 'Tours',
     nav_about: 'About Us',
@@ -61,8 +59,7 @@ const translations = {
     contact_email_label: 'Email Us',
     contact_phone_label: 'Call Us',
     contact_location_label: 'Based In',
-    contact_plan_title: "Let's Plan Your ",
-    contact_plan_highlight: 'Barcelona Experience',
+    contact_plan_title: "Let's Plan Your Barcelona Experience",
     contact_plan_desc: "Whether you have a question about one of our tours, need a custom group experience, or simply want to know more about Barcelona — we're here for you.",
     contact_hours_title: 'Response Hours',
     contact_hours_weekday: 'Monday – Friday',
@@ -78,25 +75,25 @@ const translations = {
     contact_subject_private: 'Private Group Booking',
     contact_subject_general: 'General Question',
     contact_message: 'Message',
-    contact_send: 'Send Message →',
+    contact_send: 'Send Message',
     contact_success_title: 'Message Sent!',
     contact_success_sub: "Thank you for reaching out. We'll reply within 24 hours.",
   },
   fr: {
     nav_tours: 'Visites',
-    nav_about: 'A Propos',
+    nav_about: 'À Propos',
     nav_contact: 'Contact',
     nav_blog: 'Guide BCN',
     hero_title: 'Découvrez Barcelone Comme Jamais',
     hero_sub: 'Visites semi-privées & privées premium avec des guides locaux experts. Maximum 9 personnes.',
     hero_cta: 'Explorer les Visites',
     section_tours: 'Nos Expériences',
-    section_tours_sub: 'Des visites conçues pour les voyageurs qui valorisent l\'authenticité',
+    section_tours_sub: "Des visites conçues pour les voyageurs qui valorisent l'authenticité",
     section_why: 'Pourquoi Choisir 4U Barcelona',
     feat_small: 'Petits Groupes',
     feat_small_desc: 'Maximum 9 personnes pour une expérience intime et personnalisée',
     feat_expert: 'Guides Experts',
-    feat_expert_desc: 'Historiens locaux passionnés avec 20+ ans d\'expérience',
+    feat_expert_desc: "Historiens locaux passionnés avec 20+ ans d'expérience",
     feat_skip: 'Coupe-File',
     feat_skip_desc: 'Accès prioritaire inclus dans toutes nos visites',
     feat_private: 'Options Privées',
@@ -104,7 +101,7 @@ const translations = {
     book_now: 'Réserver',
     footer_tagline: 'Visites guidées premium à Barcelone depuis 2012. La qualité avant la quantité.',
     guide_title: 'Découvrez Barcelone',
-    guide_sub: 'Un guide local sur la nourriture, la culture, les quartiers et les joyaux cachés — sélectionné par notre équipe.',
+    guide_sub: 'Un guide local sur la nourriture, la culture, les quartiers et les joyaux cachés.',
     guide_all: 'Tout',
     guide_culture: 'Culture & Événements',
     guide_food: 'Gastronomie & Boissons',
@@ -114,9 +111,8 @@ const translations = {
     contact_email_label: 'Email',
     contact_phone_label: 'Téléphone',
     contact_location_label: 'Basé À',
-    contact_plan_title: 'Planifions Votre ',
-    contact_plan_highlight: 'Expérience à Barcelone',
-    contact_plan_desc: "Que vous ayez une question sur l'une de nos visites, un besoin de groupe privé ou simplement envie d'en savoir plus — nous sommes là pour vous.",
+    contact_plan_title: 'Planifions Votre Expérience à Barcelone',
+    contact_plan_desc: "Que vous ayez une question sur l'une de nos visites ou besoin d'un groupe privé — nous sommes là pour vous.",
     contact_hours_title: 'Horaires de Réponse',
     contact_hours_weekday: 'Lundi – Vendredi',
     contact_hours_sat: 'Samedi',
@@ -131,7 +127,7 @@ const translations = {
     contact_subject_private: 'Réservation Privée',
     contact_subject_general: 'Question Générale',
     contact_message: 'Message',
-    contact_send: 'Envoyer →',
+    contact_send: 'Envoyer',
     contact_success_title: 'Message Envoyé!',
     contact_success_sub: 'Merci de nous avoir contactés. Nous répondrons dans les 24 heures.',
   },
@@ -157,7 +153,7 @@ const translations = {
     book_now: 'Reservar',
     footer_tagline: 'Tours guiados premium em Barcelona desde 2012. Qualidade acima de quantidade.',
     guide_title: 'Descubra Barcelona',
-    guide_sub: 'Um guia local sobre comida, cultura, bairros e joias escondidas — curado pela nossa equipa.',
+    guide_sub: 'Um guia local sobre comida, cultura, bairros e joias escondidas — pela nossa equipa.',
     guide_all: 'Tudo',
     guide_culture: 'Cultura & Eventos',
     guide_food: 'Gastronomia & Bebidas',
@@ -167,9 +163,8 @@ const translations = {
     contact_email_label: 'Email',
     contact_phone_label: 'Telefone',
     contact_location_label: 'Localização',
-    contact_plan_title: 'Vamos Planear a Sua ',
-    contact_plan_highlight: 'Experiência em Barcelona',
-    contact_plan_desc: 'Seja uma dúvida sobre os tours, uma experiência de grupo privado ou simplesmente mais informações — estamos aqui para si.',
+    contact_plan_title: 'Vamos Planear a Sua Experiência em Barcelona',
+    contact_plan_desc: 'Seja uma dúvida sobre os tours, grupo privado ou simplesmente mais informações — estamos aqui para si.',
     contact_hours_title: 'Horário de Resposta',
     contact_hours_weekday: 'Segunda – Sexta',
     contact_hours_sat: 'Sábado',
@@ -184,17 +179,17 @@ const translations = {
     contact_subject_private: 'Reserva Privada',
     contact_subject_general: 'Questão Geral',
     contact_message: 'Mensagem',
-    contact_send: 'Enviar Mensagem →',
+    contact_send: 'Enviar Mensagem',
     contact_success_title: 'Mensagem Enviada!',
     contact_success_sub: 'Obrigado pelo contacto. Responderemos em 24 horas.',
   },
   ru: {
     nav_tours: 'Туры',
     nav_about: 'О Нас',
-    nav_contact: 'Контакт',
+    nav_contact: 'Контакты',
     nav_blog: 'Гид BCN',
     hero_title: 'Откройте Барселону Заново',
-    hero_sub: 'Премиум полу-частные и частные туры с экспертными местными гидами. Максимум 9 гостей.',
+    hero_sub: 'Премиум полу-частные и частные туры с местными гидами. Максимум 9 гостей.',
     hero_cta: 'Выбрать Тур',
     section_tours: 'Наши Туры',
     section_tours_sub: 'Уникальные туры для путешественников, ценящих аутентичность',
@@ -202,15 +197,15 @@ const translations = {
     feat_small: 'Малые Группы',
     feat_small_desc: 'Максимум 9 человек для индивидуального опыта',
     feat_expert: 'Эксперт-Гиды',
-    feat_expert_desc: 'Страстные местные историки с 20+ летним опытом',
+    feat_expert_desc: 'Местные историки с 20+ летним опытом',
     feat_skip: 'Без Очереди',
     feat_skip_desc: 'Приоритетный доступ включён во все туры',
     feat_private: 'Частные Опции',
-    feat_private_desc: 'Эксклюзивные частные туры доступны для всех экскурсий',
+    feat_private_desc: 'Эксклюзивные частные туры для всех экскурсий',
     book_now: 'Забронировать',
     footer_tagline: 'Премиум экскурсии в Барселоне с 2012 года. Качество превыше количества.',
     guide_title: 'Откройте Барселону',
-    guide_sub: 'Местный путеводитель по еде, культуре, районам и скрытым жемчужинам — от нашей команды.',
+    guide_sub: 'Местный путеводитель по еде, культуре, районам и скрытым жемчужинам.',
     guide_all: 'Все',
     guide_culture: 'Культура & События',
     guide_food: 'Еда & Напитки',
@@ -220,9 +215,8 @@ const translations = {
     contact_email_label: 'Написать',
     contact_phone_label: 'Позвонить',
     contact_location_label: 'Мы в',
-    contact_plan_title: 'Спланируем Ваш ',
-    contact_plan_highlight: 'Отдых в Барселоне',
-    contact_plan_desc: 'Есть вопрос о турах, нужна частная экскурсия или просто хотите узнать больше о Барселоне — мы здесь для вас.',
+    contact_plan_title: 'Спланируем Ваш Отдых в Барселоне',
+    contact_plan_desc: 'Вопрос о турах, частная экскурсия или просто хотите узнать больше — мы здесь для вас.',
     contact_hours_title: 'Часы Ответа',
     contact_hours_weekday: 'Понедельник – Пятница',
     contact_hours_sat: 'Суббота',
@@ -237,7 +231,7 @@ const translations = {
     contact_subject_private: 'Частное бронирование',
     contact_subject_general: 'Общий вопрос',
     contact_message: 'Сообщение',
-    contact_send: 'Отправить →',
+    contact_send: 'Отправить',
     contact_success_title: 'Сообщение отправлено!',
     contact_success_sub: 'Спасибо за обращение. Мы ответим в течение 24 часов.',
   }
@@ -245,22 +239,25 @@ const translations = {
 
 function setLanguage(lang) {
   localStorage.setItem('4u_lang', lang);
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    var text = translations[lang] && translations[lang][key];
+    if (!text) return;
+    // Use innerText for most elements, value for inputs
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      el.placeholder = text;
+    } else {
+      el.textContent = text;
     }
   });
-  document.querySelectorAll('.lang-selector a').forEach(a => {
+  document.querySelectorAll('.lang-selector a').forEach(function(a) {
     a.classList.toggle('active', a.getAttribute('data-lang') === lang);
   });
 }
 
 window.setLanguage = setLanguage;
 
-function initLang() {
-  const saved = localStorage.getItem('4u_lang') || 'en';
+document.addEventListener('DOMContentLoaded', function() {
+  var saved = localStorage.getItem('4u_lang') || 'en';
   setLanguage(saved);
-}
-
-document.addEventListener('DOMContentLoaded', initLang);
+});
